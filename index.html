@@ -30,7 +30,7 @@
   <div class="hero-content wrap">
     <div class="hero-eyebrow" id="hero-eyebrow">Rolls developed, 2026</div>
     <h1 class="hero-title">Notes from<br><em>the field.</em></h1>
-    <p class="hero-sub">A running archive of observations from the ground. An attempt to map how complex environments and economies actually function, documented in the quiet moments where they are just being themselves.</p>
+    <p class="hero-sub">A running log of places I've gone with a camera and not enough sleep — markets, mountains, and coastlines, shot as they were, graded as I remember them.</p>
     <div class="scroll-cue"><div class="bar"></div>Scroll</div>
   </div>
 </section>
@@ -40,9 +40,14 @@
   <section class="statement" id="about">
     <div class="statement-grid">
       <div class="eyebrow">Statement</div>
+      <div class="statement-portrait">
+        <img src="images/portrait.jpg" alt="Timothy Castillon">
+        <div class="cap">Timothy, Lake Brienz, CH</div>
+      </div>
       <div>
-        <p>I started bringing a real camera on trips instead of just a phone, and it changed how I travel — slower, more attentive, always looking for the frame before the moment passes.</p>
-        <p class="fine">This site is where that habit lives. Every roll gets the same treatment: same warm grade, same square crop, so a market in Addis Ababa and a coastline in Ica sit in the same visual language. No filters, no presets from someone else's trip — just a process I'm still refining, one country at a time.</p>
+        <p>I started carrying a camera not to capture where I was, but to slow down and understand how these places actually work. It forced me to be more attentive, to look for the patterns in a busy market or the rhythm of daily life before the moment passed.</p>
+        <p class="fine">This site is where those observations live. I handle every roll with the same level of care and consistency, not to force a style, but to let the places themselves speak in a unified, grounded language. This is a running log of my attempt to make sense of the world, one environment at a time.</p>
+        <p class="fine emphasis">My practice is rooted in a simple belief: knowledge is most powerful when it illuminates human stories — stories that data alone cannot convey. Through this documentation and my wider work, I strive to make the realities of climate-impacted communities visible, ensuring their experiences inform and inspire meaningful global action.</p>
       </div>
     </div>
   </section>
@@ -52,7 +57,8 @@
     <div class="count" id="roll-count">— rolls developed</div>
   </div>
 
-  <div id="entries"></div>
+  <div class="tag-filters" id="tag-filters"></div>
+  <div class="journal-grid" id="journal-grid"></div>
 
   <section class="contact-section" id="contact">
     <div class="contact-grid">
@@ -82,11 +88,6 @@
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-close" id="lightbox-close">Close ✕</div>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
 <script src="entries.js"></script>
 <script>
   function renderSite() {
@@ -94,9 +95,12 @@
       throw new Error('ENTRIES is missing or invalid -- check entries.js for a syntax error.');
     }
 
+    // newest first
+    const sorted = [...ENTRIES].reverse();
+
     const heroBg = document.getElementById('hero-bg');
     const heroEyebrow = document.getElementById('hero-eyebrow');
-    ENTRIES.slice(0, 3).forEach((e, i) => {
+    sorted.slice(0, 3).forEach((e, i) => {
       const img = document.createElement('img');
       img.src = `images/${e.slug}/01.jpg`;
       img.alt = '';
@@ -104,65 +108,54 @@
       heroBg.appendChild(img);
     });
     heroEyebrow.textContent = `${ENTRIES.length} roll${ENTRIES.length !== 1 ? 's' : ''} developed, ${new Date().getFullYear()}`;
-
     document.getElementById('roll-count').textContent =
       `${String(ENTRIES.length).padStart(2, '0')} roll${ENTRIES.length !== 1 ? 's' : ''} developed`;
 
-    const entriesRoot = document.getElementById('entries');
-    ENTRIES.forEach(entry => {
-      const article = document.createElement('article');
-      article.className = 'entry';
+    // ---- tag filter pills ----
+    const allTags = [...new Set(ENTRIES.flatMap(e => e.tags || []))].sort();
+    const tagRoot = document.getElementById('tag-filters');
+    let activeTag = null;
 
-      const frames = Array.from({ length: entry.count }, (_, i) => {
-        const n = String(i + 1).padStart(2, '0');
-        return `<div class="frame" data-frame="${entry.slug.toUpperCase().slice(0,3)}-${n}" tabindex="0">
-                  <img src="images/${entry.slug}/${n}.jpg" alt="${entry.title}, frame ${n}" loading="lazy">
-                </div>`;
-      }).join('');
-
-      article.innerHTML = `
-        <div class="entry-head">
-          <div class="entry-meta">
-            ${entry.date}
-            <span class="loc">${entry.coords}</span>
-            <span class="loc">${entry.location}</span>
+    function renderGrid() {
+      const grid = document.getElementById('journal-grid');
+      const visible = activeTag ? sorted.filter(e => (e.tags || []).includes(activeTag)) : sorted;
+      grid.innerHTML = visible.map(entry => `
+        <a class="journal-card" href="entry.html?slug=${entry.slug}">
+          <div class="card-thumb"><img src="images/${entry.slug}/01.jpg" alt="${entry.title}" loading="lazy"></div>
+          <div class="card-body">
+            <div class="card-meta">${entry.date} <span class="loc">— ${entry.location}</span></div>
+            <h3 class="card-title">${entry.title}</h3>
+            <div class="card-tags">${(entry.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
           </div>
-          <div>
-            <h3 class="entry-title">${entry.title}</h3>
-            <p class="entry-desc">${entry.description}</p>
-          </div>
-        </div>
-        <div class="contact-sheet">${frames}</div>
-      `;
-      entriesRoot.appendChild(article);
-    });
+        </a>
+      `).join('');
+    }
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    document.addEventListener('click', (e) => {
-      const frame = e.target.closest('.frame');
-      if (frame) {
-        const img = frame.querySelector('img');
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.classList.add('open');
-      }
-    });
-    document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+    function renderPills() {
+      const pills = [`<button class="tag-pill ${activeTag === null ? 'active' : ''}" data-tag="">All</button>`]
+        .concat(allTags.map(t => `<button class="tag-pill ${activeTag === t ? 'active' : ''}" data-tag="${t}">${t}</button>`));
+      tagRoot.innerHTML = pills.join('');
+      tagRoot.querySelectorAll('.tag-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeTag = btn.dataset.tag || null;
+          renderPills();
+          renderGrid();
+        });
+      });
+    }
+
+    renderPills();
+    renderGrid();
   }
 
   try {
     renderSite();
   } catch (err) {
-    const entriesRoot = document.getElementById('entries');
-    entriesRoot.innerHTML = `
-      <div style="padding:64px 0; font-family:'IBM Plex Mono', monospace; font-size:13px; color:#d3a24e; border:1px solid #1c3552; border-radius:4px; padding:24px; margin:32px 0;">
-        Couldn't load the journal entries. There's likely a syntax error in entries.js
+    document.getElementById('journal-grid').innerHTML = `
+      <div style="grid-column:1/-1; padding:24px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:#d3a24e; border:1px solid #1c3552; border-radius:4px;">
+        Couldn't load journal entries. There's likely a syntax error in entries.js
         (a stray quote mark is the usual culprit). Open the browser console (F12) for
-        the exact line number.<br><br>
-        Error: ${err.message}
+        the exact line number.<br><br>Error: ${err.message}
       </div>`;
     console.error(err);
   }
