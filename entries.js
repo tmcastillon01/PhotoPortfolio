@@ -73,7 +73,7 @@ const ENTRIES = [
 
   {
     slug: "grindelwald",
-    date: "MAR 2026",
+    date: "NOV 2021",
     coords: "46.62°N 8.03°E",
     location: "GRINDELWALD, CH",
     tag: "Land & Climate",
