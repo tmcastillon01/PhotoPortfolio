@@ -50,6 +50,18 @@ const ENTRIES = [
     count: 8,
   },
 
+  {
+    slug: "nice",
+    date: "OCT 2025",
+    coords: "43.70°N 7.27°E",
+    location: "NICE, FR",
+    tags: ["Land & Climate"],
+    title: `Nice: Coastline at Low Tide`,
+    description:
+      `Everything in Nice feels dipped in a slow-motion filter, and you stop fighting it almost immediately. The air sits warm on your shoulders, and the pace of the day belongs to whoever is furthest from an appointment. Centuries-old facades in pastel shutters share the block with the modern world, unbothered by each other. Mostly, though, this is a record of the beach — not sand, but smooth gray stones you trade your shoes for, sitting until the sky burns down to orange. There's a particular quiet to how the day ends there: watching the tide, not needing to fill the space between you and whoever you're sitting next to. Nice doesn't ask anything of you. It just hands you the sun, an impossible blue, and lets you lose track of both.`,
+    count: 8,
+  },
+
   // Next country goes here, e.g.:
   // {
   //   slug: "example",
