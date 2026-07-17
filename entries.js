@@ -71,6 +71,19 @@ const ENTRIES = [
     count: 8,
   },
 
+  {
+    slug: "grindelwald",
+    date: "MAR 2026",
+    coords: "46.62°N 8.03°E",
+    location: "GRINDELWALD, CH",
+    tag: "Land & Climate",
+    title: `Grindelwald: The Architecture of Instability`,
+    description:
+      `In Grindelwald, the landscape is in a state of rapid transition. From a distance, peaks like the Eiger and the Wetterhorn look permanent, carved in stone and ice. Up close, the mountain is losing its foundation. This documentation focuses on the intersection of winter tourism and structural vulnerability, specifically how ski infrastructure clings to slopes that are increasingly destabilized by thawing permafrost and retreating glaciers. It's a striking contrast to watch people ride lifts and ski through a landscape that feels solid, while the rockfaces above are quietly losing their integrity. These images aren't just a record of a ski season. They're a study of a fragile ecosystem, documenting the moment human activity meets the accelerating, invisible shift of a warming mountain.`,
+    voices: [],
+    count: 8,
+  },
+
   // Next entry goes here, e.g.:
   // {
   //   slug: "example",
