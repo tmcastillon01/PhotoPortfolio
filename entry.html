@@ -34,8 +34,11 @@
 
 <footer>
   <div class="wrap footer-grid">
-    <div class="wordmark">field<span class="accent">/</span>notes</div>
-    <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
+    <div>
+      <div class="wordmark">field<span class="accent">/</span>notes</div>
+      <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
+      <p class="footer-copyright">© Timothy Castillon 2026</p>
+    </div>
   </div>
 </footer>
 
@@ -80,7 +83,7 @@
         <div>
           <h1 class="entry-title">${entry.title}</h1>
           <p class="entry-desc">${entry.description}</p>
-          <div class="card-tags" style="margin-top:18px;">${(entry.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
+          <div class="card-tags" style="margin-top:18px;">${entry.tag ? `<span>${entry.tag}</span>` : ''}</div>
         </div>
       </div>
       <div class="contact-sheet" style="margin-left:0;">${frames}</div>

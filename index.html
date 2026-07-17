@@ -30,7 +30,7 @@
   <div class="hero-content wrap">
     <div class="hero-eyebrow" id="hero-eyebrow">Rolls developed, 2026</div>
     <h1 class="hero-title">Notes from<br><em>the field.</em></h1>
-    <p class="hero-sub">A running log of places I've gone with a camera and not enough sleep — markets, mountains, and coastlines, shot as they were, graded as I remember them.</p>
+    <p class="hero-sub">A field record of the people and places carrying the weight of a changing world: labor, land, and the communities closest to both, documented up close and credited where I can.</p>
     <div class="scroll-cue"><div class="bar"></div>Scroll</div>
   </div>
 </section>
@@ -45,9 +45,8 @@
         <div class="cap">Timothy, Lake Brienz, CH</div>
       </div>
       <div>
-        <p>I started carrying a camera not to capture where I was, but to slow down and understand how these places actually work. It forced me to be more attentive, to look for the patterns in a busy market or the rhythm of daily life before the moment passed.</p>
-        <p class="fine">This site is where those observations live. I handle every roll with the same level of care and consistency, not to force a style, but to let the places themselves speak in a unified, grounded language. This is a running log of my attempt to make sense of the world, one environment at a time.</p>
-        <p class="fine emphasis">My practice is rooted in a simple belief: knowledge is most powerful when it illuminates human stories — stories that data alone cannot convey. Through this documentation and my wider work, I strive to make the realities of climate-impacted communities visible, ensuring their experiences inform and inspire meaningful global action.</p>
+        <p class="fine">The people in these places carry more than most of us ask them to: the labor behind informal economies, herding routes reshaped by retreating glaciers, fishing and tourism livelihoods tied to oceans that don't behave the way they used to. My approach is simple, even if I'm still learning to do it well: a camera, real time spent in a place, and the same careful visual language applied everywhere, so no location is dressed up or down to seem more important than another. I name people where I can, with consent, and I'm working toward letting their own words sit in this space alongside mine, instead of standing in for them.</p>
+        <p class="fine emphasis">Knowledge is most powerful when it illuminates human stories: the kind data alone can't carry. That's what this practice is trying to do: make the realities of climate-impacted communities visible, so their experience can inform something beyond a photograph.</p>
       </div>
     </div>
   </section>
@@ -65,6 +64,7 @@
       <div class="eyebrow">Contact</div>
       <div>
         <p class="contact-bio">I'm a multilingual visual documentarian currently based between Geneva, California, and Manila. My practice focuses on documenting the intersection of human systems, labor, and local geography through field-based visual records.</p>
+        <p class="contact-bio">Open to local and international assignments. If you'd like to collaborate, or have a story you think deserves this kind of attention, reach out below.</p>
         <div class="contact-methods">
           <div class="contact-method">
             <span class="label">Email</span>
@@ -83,20 +83,33 @@
 
 <footer>
   <div class="wrap footer-grid">
-    <div class="wordmark">field<span class="accent">/</span>notes</div>
-    <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
+    <div>
+      <div class="wordmark">field<span class="accent">/</span>notes</div>
+      <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
+      <p class="footer-copyright">© Timothy Castillon 2026</p>
+    </div>
   </div>
 </footer>
 
 <script src="entries.js"></script>
 <script>
+  // Parses "MAR 2025" style strings into a comparable value.
+  // Falls back to 0 (oldest) if the format doesn't match, rather
+  // than crashing the whole sort.
+  const MONTHS = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
+  function dateValue(str) {
+    const m = /^([A-Z]{3})\s+(\d{4})$/.exec((str || '').trim().toUpperCase());
+    if (!m || !(m[1] in MONTHS)) return 0;
+    return parseInt(m[2], 10) * 12 + MONTHS[m[1]];
+  }
+
   function renderSite() {
     if (typeof ENTRIES === 'undefined' || !Array.isArray(ENTRIES)) {
       throw new Error('ENTRIES is missing or invalid -- check entries.js for a syntax error.');
     }
 
-    // newest first
-    const sorted = [...ENTRIES].reverse();
+    // newest first, by actual parsed date -- not array order
+    const sorted = [...ENTRIES].sort((a, b) => dateValue(b.date) - dateValue(a.date));
 
     const heroBg = document.getElementById('hero-bg');
     const heroEyebrow = document.getElementById('hero-eyebrow');
@@ -111,21 +124,21 @@
     document.getElementById('roll-count').textContent =
       `${String(ENTRIES.length).padStart(2, '0')} roll${ENTRIES.length !== 1 ? 's' : ''} developed`;
 
-    // ---- tag filter pills ----
-    const allTags = [...new Set(ENTRIES.flatMap(e => e.tags || []))].sort();
+    // ---- tag filter pills (single tag per entry) ----
+    const allTags = [...new Set(ENTRIES.map(e => e.tag).filter(Boolean))].sort();
     const tagRoot = document.getElementById('tag-filters');
     let activeTag = null;
 
     function renderGrid() {
       const grid = document.getElementById('journal-grid');
-      const visible = activeTag ? sorted.filter(e => (e.tags || []).includes(activeTag)) : sorted;
+      const visible = activeTag ? sorted.filter(e => e.tag === activeTag) : sorted;
       grid.innerHTML = visible.map(entry => `
         <a class="journal-card" href="entry.html?slug=${entry.slug}">
           <div class="card-thumb"><img src="images/${entry.slug}/01.jpg" alt="${entry.title}" loading="lazy"></div>
           <div class="card-body">
             <div class="card-meta">${entry.date} <span class="loc">— ${entry.location}</span></div>
             <h3 class="card-title">${entry.title}</h3>
-            <div class="card-tags">${(entry.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
+            <div class="card-tags">${entry.tag ? `<span>${entry.tag}</span>` : ''}</div>
           </div>
         </a>
       `).join('');
