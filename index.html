@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes From the Field — A Photography Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="wordmark">field<span class="accent">/</span>notes <span class="by">by</span> <span class="accent">Timothy Castillon</span></div>
+      <div class="navlinks">
+        <a href="#journal">Journal</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-content wrap">
+    <div class="hero-eyebrow" id="hero-eyebrow">Rolls developed, 2026</div>
+    <h1 class="hero-title">Notes from<br><em>the field.</em></h1>
+    <p class="hero-sub">A running log of places I've gone with a camera and not enough sleep — markets, mountains, and coastlines, shot as they were, graded as I remember them.</p>
+    <div class="scroll-cue"><div class="bar"></div>Scroll</div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <section class="statement" id="about">
+    <div class="statement-grid">
+      <div class="eyebrow">Statement</div>
+      <div class="statement-portrait">
+        <img src="images/portrait.jpg" alt="Timothy Castillon">
+        <div class="cap">Timothy, Lake Brienz, CH</div>
+      </div>
+      <div>
+        <p>I started carrying a camera not to capture where I was, but to slow down and understand how these places actually work. It forced me to be more attentive, to look for the patterns in a busy market or the rhythm of daily life before the moment passed.</p>
+        <p class="fine">This site is where those observations live. I handle every roll with the same level of care and consistency, not to force a style, but to let the places themselves speak in a unified, grounded language. This is a running log of my attempt to make sense of the world, one environment at a time.</p>
+        <p class="fine emphasis">My practice is rooted in a simple belief: knowledge is most powerful when it illuminates human stories — stories that data alone cannot convey. Through this documentation and my wider work, I strive to make the realities of climate-impacted communities visible, ensuring their experiences inform and inspire meaningful global action.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="journal-head" id="journal">
+    <h2>The Journal</h2>
+    <div class="count" id="roll-count">— rolls developed</div>
+  </div>
+
+  <div class="tag-filters" id="tag-filters"></div>
+  <div class="journal-grid" id="journal-grid"></div>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-grid">
+      <div class="eyebrow">Contact</div>
+      <div>
+        <p class="contact-bio">I'm a multilingual visual documentarian currently based between Geneva, California, and Manila. My practice focuses on documenting the intersection of human systems, labor, and local geography through field-based visual records.</p>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <span class="label">Email</span>
+            <a href="mailto:timothyearlmateocastillon@gmail.com">timothyearlmateocastillon@gmail.com</a>
+          </div>
+          <div class="contact-method">
+            <span class="label">WhatsApp</span>
+            <span class="value">+41 78 249 03 05</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="wordmark">field<span class="accent">/</span>notes</div>
+    <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
+  </div>
+</footer>
+
+<script src="entries.js"></script>
+<script>
+  function renderSite() {
+    if (typeof ENTRIES === 'undefined' || !Array.isArray(ENTRIES)) {
+      throw new Error('ENTRIES is missing or invalid -- check entries.js for a syntax error.');
+    }
+
+    // newest first
+    const sorted = [...ENTRIES].reverse();
+
+    const heroBg = document.getElementById('hero-bg');
+    const heroEyebrow = document.getElementById('hero-eyebrow');
+    sorted.slice(0, 3).forEach((e, i) => {
+      const img = document.createElement('img');
+      img.src = `images/${e.slug}/01.jpg`;
+      img.alt = '';
+      img.style.animationDelay = `${i * 6}s`;
+      heroBg.appendChild(img);
+    });
+    heroEyebrow.textContent = `${ENTRIES.length} roll${ENTRIES.length !== 1 ? 's' : ''} developed, ${new Date().getFullYear()}`;
+    document.getElementById('roll-count').textContent =
+      `${String(ENTRIES.length).padStart(2, '0')} roll${ENTRIES.length !== 1 ? 's' : ''} developed`;
+
+    // ---- tag filter pills ----
+    const allTags = [...new Set(ENTRIES.flatMap(e => e.tags || []))].sort();
+    const tagRoot = document.getElementById('tag-filters');
+    let activeTag = null;
+
+    function renderGrid() {
+      const grid = document.getElementById('journal-grid');
+      const visible = activeTag ? sorted.filter(e => (e.tags || []).includes(activeTag)) : sorted;
+      grid.innerHTML = visible.map(entry => `
+        <a class="journal-card" href="entry.html?slug=${entry.slug}">
+          <div class="card-thumb"><img src="images/${entry.slug}/01.jpg" alt="${entry.title}" loading="lazy"></div>
+          <div class="card-body">
+            <div class="card-meta">${entry.date} <span class="loc">— ${entry.location}</span></div>
+            <h3 class="card-title">${entry.title}</h3>
+            <div class="card-tags">${(entry.tags || []).map(t => `<span>${t}</span>`).join('')}</div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function renderPills() {
+      const pills = [`<button class="tag-pill ${activeTag === null ? 'active' : ''}" data-tag="">All</button>`]
+        .concat(allTags.map(t => `<button class="tag-pill ${activeTag === t ? 'active' : ''}" data-tag="${t}">${t}</button>`));
+      tagRoot.innerHTML = pills.join('');
+      tagRoot.querySelectorAll('.tag-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeTag = btn.dataset.tag || null;
+          renderPills();
+          renderGrid();
+        });
+      });
+    }
+
+    renderPills();
+    renderGrid();
+  }
+
+  try {
+    renderSite();
+  } catch (err) {
+    document.getElementById('journal-grid').innerHTML = `
+      <div style="grid-column:1/-1; padding:24px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:#d3a24e; border:1px solid #1c3552; border-radius:4px;">
+        Couldn't load journal entries. There's likely a syntax error in entries.js
+        (a stray quote mark is the usual culprit). Open the browser console (F12) for
+        the exact line number.<br><br>Error: ${err.message}
+      </div>`;
+    console.error(err);
+  }
+</script>
+
+</body>
+</html>
