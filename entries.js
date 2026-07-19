@@ -42,7 +42,7 @@ const ENTRIES = [
     tag: "Wildlife & Ecology",
     title: `Islas Ballestas: The Poor Man's Galápagos`,
     description:
-      `Islas Ballestas exists because of what nests there. Sea lions, Humboldt penguins, and dense colonies of seabirds whose droppings once made this coastline one of Peru's most valuable 19th-century exports, the foundation of an entire economy built on guano before it became a marine reserve. Today the boats run on tourism instead, steered by local operators whose income depends on the health of an ecosystem they don't control. Warmer Pacific waters during El Niño years can gut the fish stocks these colonies depend on, which makes a bad ocean year here somebody's actual income, not an abstraction. I spent the morning photographing the animals and the rock they live on; what I didn't do enough of was ask the people steering those boats what they've watched change. That's next.`,
+      `Islas Ballestas exists because of what nests there. Sea lions, Humboldt penguins, and dense colonies of seabirds whose droppings once made this coastline one of Peru's most valuable 19th-century exports, the foundation of an entire economy built on guano before it became a marine reserve. Today the boats run on tourism instead, steered by local operators whose income depends on the health of an ecosystem they don't control. Warmer Pacific waters during El Niño years can gut the fish stocks these colonies depend on, which makes a bad ocean year here somebody's actual income, not an abstraction. I spent the morning on the animals and the rock they live on, and not enough time asking the people steering the boats what they've actually watched change out there. That's on me to fix next trip.`,
     voices: [],
     count: 8,
   },
@@ -54,7 +54,7 @@ const ENTRIES = [
     tag: "Land & Climate",
     title: `Vinicunca: Life on the Rainbow Mountain`,
     description:
-      `Vinicunca's color gets all the attention, but the people who work that trail are what actually keeps the mountain functional for the thousands who climb it. Local families lease their own horses and alpacas for the ascent, walk the route on foot beside tourists who paid for the ride, and do it through weather that can turn from clear sky to hard fog inside an hour. The glaciers above towns like this one are retreating within a single generation's memory, part of a broader, well-documented warming across the Andes, a fact that rarely makes it into a photo of a horse against a mountain. I didn't ask enough on this trip about how families here are adapting to that; I'd like their account of it in this space eventually, not just mine.`,
+      `Vinicunca's color gets all the attention, but the people who work that trail are what actually keeps the mountain functional for the thousands who climb it. Local families lease their own horses and alpacas for the ascent, walk the route on foot beside tourists who paid for the ride, and do it through weather that can turn from clear sky to hard fog inside an hour. The glaciers above towns like this one are retreating within a single generation's memory, part of a broader, well-documented warming across the Andes, a fact that rarely makes it into a photo of a horse against a mountain. I didn't ask enough on this trip about how families here are adapting to that. Next time, I want more of their words in this space, not just my read on the scene.`,
     voices: [],
     count: 8,
   },
@@ -80,6 +80,19 @@ const ENTRIES = [
     title: `Grindelwald: The Architecture of Instability`,
     description:
       `In Grindelwald, the landscape is in a state of rapid transition. From a distance, peaks like the Eiger and the Wetterhorn look permanent, carved in stone and ice. Up close, the mountain is losing its foundation. This documentation focuses on the intersection of winter tourism and structural vulnerability, specifically how ski infrastructure clings to slopes that are increasingly destabilized by thawing permafrost and retreating glaciers. It's a striking contrast to watch people ride lifts and ski through a landscape that feels solid, while the rockfaces above are quietly losing their integrity. These images aren't just a record of a ski season. They're a study of a fragile ecosystem, documenting the moment human activity meets the accelerating, invisible shift of a warming mountain.`,
+    voices: [],
+    count: 8,
+  },
+
+  {
+    slug: "valleyoffire",
+    date: "APR 2026",
+    coords: "36.43°N 114.53°W",
+    location: "VALLEY OF FIRE, NV",
+    tag: "Land & Climate",
+    title: `Valley of Fire: The Aesthetics of Aridity`,
+    description:
+      `In the Mojave, the land doesn't really hide how fragile it is. I spent the day out here with my uncle, and at one point he pointed at the rock and said it looked almost scorched, like the sun had just been sitting on it too long. He's not wrong. The whole place is that vibrant, iron-rich Aztec sandstone, and up close it really does look burnt rather than just red. There's a heavy kind of quiet out there too, the kind you only get somewhere this dry. Everything alive in that basin is holding on by a thread, and you can feel it. Water here is more of a memory than a resource. The desert plants look gnarled and stubborn, the rock keeps getting worn down by wind and heat instead of rain, and the whole landscape feels like it's negotiating with the dryness just to stay standing. It's not just a nice view. It's closer to a record of a place living right at the edge of what it can handle. One honest note though: this is just what I noticed on one afternoon, in one conversation with my uncle. It's not a geological study, and if I got something wrong here, I'd genuinely want to know.`,
     voices: [],
     count: 8,
   },
