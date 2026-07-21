@@ -88,18 +88,20 @@
       <div class="sources-line"><span>Sources:</span> ${entry.sources.join(' &nbsp;\u2022&nbsp; ')}</div>` : '';
 
     root.innerHTML = `
-      <div class="entry-head" style="margin-bottom:40px;">
-        <div class="entry-meta">
-          ${entry.date}
-          <span class="loc">${entry.coords}</span>
-          <span class="loc">${entry.location}</span>
+      <div class="entry-head">
+        <div class="entry-col-meta">
+          <div class="entry-meta" style="padding-top:0;">
+            ${entry.date}
+            <span class="loc">${entry.coords}</span>
+            <span class="loc">${entry.location}</span>
+          </div>
+          ${dataCardHtml}
+          ${sourcesHtml}
         </div>
-        <div>
+        <div class="entry-col-main">
           <h1 class="entry-title">${entry.title}</h1>
           <p class="entry-desc">${entry.description}</p>
           <div class="card-tags" style="margin-top:18px;">${entry.tag ? `<span>${entry.tag}</span>` : ''}</div>
-          ${dataCardHtml}
-          ${sourcesHtml}
         </div>
       </div>
       <div class="contact-sheet" style="margin-left:0; margin-top:56px;">${frames}</div>
