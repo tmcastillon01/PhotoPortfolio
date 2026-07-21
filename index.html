@@ -20,6 +20,10 @@
         <a href="#journal">Journal</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <div class="search-wrap" id="search-wrap">
+          <button class="search-toggle" id="search-toggle" aria-label="Search entries">&#128269;</button>
+          <input class="search-input" id="search-input" type="text" placeholder="Search...">
+        </div>
       </div>
     </nav>
   </div>
@@ -128,10 +132,22 @@
     const allTags = [...new Set(ENTRIES.map(e => e.tag).filter(Boolean))].sort();
     const tagRoot = document.getElementById('tag-filters');
     let activeTag = null;
+    let searchQuery = '';
+
+    function matchesSearch(entry, q) {
+      if (!q) return true;
+      const haystack = `${entry.title} ${entry.location} ${entry.tag || ''} ${entry.description}`.toLowerCase();
+      return haystack.includes(q);
+    }
 
     function renderGrid() {
       const grid = document.getElementById('journal-grid');
-      const visible = activeTag ? sorted.filter(e => e.tag === activeTag) : sorted;
+      let visible = activeTag ? sorted.filter(e => e.tag === activeTag) : sorted;
+      visible = visible.filter(e => matchesSearch(e, searchQuery));
+      if (visible.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; padding:24px 0; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-dim);">No entries match "${searchQuery}".</div>`;
+        return;
+      }
       grid.innerHTML = visible.map(entry => `
         <a class="journal-card" href="entry.html?slug=${entry.slug}">
           <div class="card-thumb"><img src="images/${entry.slug}/01.jpg" alt="${entry.title}" loading="lazy"></div>
@@ -156,6 +172,27 @@
         });
       });
     }
+
+    // ---- search toggle + live filter ----
+    const searchWrap = document.getElementById('search-wrap');
+    const searchToggle = document.getElementById('search-toggle');
+    const searchInput = document.getElementById('search-input');
+    searchToggle.addEventListener('click', () => {
+      searchWrap.classList.toggle('open');
+      if (searchWrap.classList.contains('open')) searchInput.focus();
+    });
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      renderGrid();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && searchWrap.classList.contains('open')) {
+        searchWrap.classList.remove('open');
+        searchInput.value = '';
+        searchQuery = '';
+        renderGrid();
+      }
+    });
 
     renderPills();
     renderGrid();

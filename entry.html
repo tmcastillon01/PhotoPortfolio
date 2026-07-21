@@ -44,7 +44,10 @@
 
 <div class="lightbox" id="lightbox">
   <div class="lightbox-close" id="lightbox-close">Close ✕</div>
-  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-frame">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
 </div>
 
 <script src="entries.js"></script>
@@ -68,10 +71,21 @@
 
     const frames = Array.from({ length: entry.count }, (_, i) => {
       const n = String(i + 1).padStart(2, '0');
-      return `<div class="frame" data-frame="${entry.slug.toUpperCase().slice(0,3)}-${n}" tabindex="0">
+      const cap = (entry.captions && entry.captions[i]) ? entry.captions[i] : '';
+      return `<div class="frame" data-frame="${entry.slug.toUpperCase().slice(0,3)}-${n}" data-caption="${cap.replace(/"/g, '&quot;')}" tabindex="0">
                 <img src="images/${entry.slug}/${n}.jpg" alt="${entry.title}, frame ${n}" loading="lazy">
               </div>`;
     }).join('');
+
+    const dataCardHtml = (entry.dataPoints && entry.dataPoints.length) ? `
+      <div class="data-card">
+        <div class="data-label">[ Field Data ]</div>
+        ${entry.dataPoints.map(([k, v]) => `<div class="data-row"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('')}
+        ${entry.dataNote ? `<div class="data-note">${entry.dataNote}</div>` : ''}
+      </div>` : '';
+
+    const sourcesHtml = (entry.sources && entry.sources.length) ? `
+      <div class="sources-line"><span>Sources:</span> ${entry.sources.join(' &nbsp;\u2022&nbsp; ')}</div>` : '';
 
     root.innerHTML = `
       <div class="entry-head" style="margin-bottom:40px;">
@@ -84,19 +98,24 @@
           <h1 class="entry-title">${entry.title}</h1>
           <p class="entry-desc">${entry.description}</p>
           <div class="card-tags" style="margin-top:18px;">${entry.tag ? `<span>${entry.tag}</span>` : ''}</div>
+          ${dataCardHtml}
+          ${sourcesHtml}
         </div>
       </div>
-      <div class="contact-sheet" style="margin-left:0;">${frames}</div>
+      <div class="contact-sheet" style="margin-left:0; margin-top:56px;">${frames}</div>
     `;
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
     document.addEventListener('click', (e) => {
       const frame = e.target.closest('.frame');
       if (frame) {
         const img = frame.querySelector('img');
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = frame.dataset.caption || '';
+        lightboxCaption.style.display = frame.dataset.caption ? 'block' : 'none';
         lightbox.classList.add('open');
       }
     });
