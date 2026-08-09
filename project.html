@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Projects — field/notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="wordmark">field<span class="accent">/</span>notes <span class="by">by</span> <span class="accent">Timothy Castillon</span></a>
+      <div class="navlinks">
+        <a href="index.html#journal">Journal</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="projects.html" style="color:var(--gold);">Projects</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="entry-page-head">
+    <a class="back-link" href="projects.html">&larr; Back to Projects</a>
+    <div id="project-root">Loading…</div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="wordmark">field<span class="accent">/</span>notes</div>
+      <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
+      <p class="footer-copyright">© Timothy Castillon 2026</p>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightbox-close">Close ✕</div>
+  <div class="lightbox-frame">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<script src="projects.js"></script>
+<script>
+  function renderProject() {
+    if (typeof PROJECTS === 'undefined' || !Array.isArray(PROJECTS)) {
+      throw new Error('PROJECTS is missing or invalid -- check projects.js for a syntax error.');
+    }
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+    const p = PROJECTS.find(x => x.slug === slug);
+    const root = document.getElementById('project-root');
+
+    if (!p || p.status !== 'live') {
+      root.innerHTML = `<p style="color:var(--ink-muted); font-family:'IBM Plex Mono',monospace; font-size:14px;">
+        This project isn't live yet. <a href="projects.html" style="color:var(--gold);">Back to Projects.</a></p>`;
+      return;
+    }
+
+    document.getElementById('page-title').textContent = `${p.title} — field/notes`;
+
+    const frames = Array.from({ length: p.count }, (_, i) => {
+      const n = String(i + 1).padStart(2, '0');
+      const cap = (p.captions && p.captions[i]) ? p.captions[i] : '';
+      return `<div class="frame" data-frame="${p.slug.toUpperCase().slice(0,3)}-${n}" data-caption="${cap.replace(/"/g, '&quot;')}" tabindex="0">
+                <img src="images/${p.slug}/${n}.jpg" alt="${p.title}, frame ${n}" loading="lazy">
+              </div>`;
+    }).join('');
+
+    const dataCardHtml = (p.dataPoints && p.dataPoints.length) ? `
+      <div class="data-card">
+        <div class="data-label">[ Field Data ]</div>
+        ${p.dataPoints.map(([k, v]) => `<div class="data-row"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('')}
+      </div>` : '';
+
+    const sourcesHtml = (p.sources && p.sources.length) ? `
+      <div class="sources-line"><span>Sources:</span> ${p.sources.join(' &nbsp;\u2022&nbsp; ')}</div>` : '';
+
+    const postGridHtml = p.postGrid ? `
+      <div class="postgrid">
+        <h2>${p.postGrid.heading}</h2>
+        <p>${p.postGrid.intro}</p>
+        <div class="postgrid-bullets">
+          ${(p.postGrid.bullets || []).map(b => `
+            <div class="postgrid-bullet">
+              <div class="b-title">${b.title}</div>
+              <div class="b-body">${b.body}</div>
+            </div>`).join('')}
+        </div>
+        <p>${p.postGrid.closing}</p>
+      </div>` : '';
+
+    root.innerHTML = `
+      <div class="entry-head">
+        <div class="entry-col-meta">
+          <div class="entry-meta" style="padding-top:0;">
+            ${p.date}
+            ${p.coords ? `<span class="loc">${p.coords}</span>` : ''}
+            <span class="loc">${p.location}</span>
+          </div>
+          ${dataCardHtml}
+          ${sourcesHtml}
+        </div>
+        <div class="entry-col-main">
+          <h1 class="entry-title">${p.title}</h1>
+          <p class="entry-desc">${p.intro}</p>
+          <div class="card-tags" style="margin-top:18px;">${p.tag ? `<span>${p.tag}</span>` : ''}</div>
+        </div>
+      </div>
+      <div class="contact-sheet" style="margin-left:0; margin-top:56px;">${frames}</div>
+      ${postGridHtml}
+    `;
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    document.addEventListener('click', (e) => {
+      const frame = e.target.closest('.frame');
+      if (frame) {
+        const img = frame.querySelector('img');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = frame.dataset.caption || '';
+        lightboxCaption.style.display = frame.dataset.caption ? 'block' : 'none';
+        lightbox.classList.add('open');
+      }
+    });
+    document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+  }
+
+  try {
+    renderProject();
+  } catch (err) {
+    document.getElementById('project-root').innerHTML = `
+      <div style="padding:24px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:#d3a24e; border:1px solid #1c3552; border-radius:4px;">
+        Couldn't load this project. Likely a syntax error in projects.js. Check the browser console (F12).<br><br>Error: ${err.message}
+      </div>`;
+    console.error(err);
+  }
+</script>
+
+</body>
+</html>
