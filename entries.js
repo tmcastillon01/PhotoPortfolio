@@ -234,9 +234,7 @@ const ENTRIES = [
     tag: "Land & Climate",
     title: `Zion: The Grandeur of Verticality`,
     description:
-      `In Zion, the land doesn't just spread out, it reaches upward in giant, overwhelming walls. I spent the day deep in the canyon with my family, and at one point they all stared straight up at the sheer cliffs of white and pink rock and said it felt like standing at the bottom of a cathedral carved by time. They are not wrong. The whole place is dominated by massive, iron-stained Navajo Sandstone, and up close you can see the cross-bedding layers left behind by ancient sand dunes, frozen in stone for roughly 190 million years. 
-      
-      There's a quiet, reverent hum running through the canyon floor, broken mostly by the rushing cold water of the Virgin River winding through the shadow of the monoliths. But that quiet is managed, not accidental. Zion has been loved into a kind of crisis: a mandatory shuttle has run through the canyon since 2000 just to keep private cars from choking the one road in, and since 2022 climbing Angels Landing requires winning a permit lottery, because foot traffic alone was wearing down the chains and the rock itself. The real aha moment for me wasn't the scenery. It was realizing that the silence I was standing in had been engineered: millions of people want exactly this same quiet, and the park now has to ration it to protect the thing everyone came for. Unlike the dry stillness of the desert basin at Valley of Fire, life here hugs the riverbanks tightly: cottonwoods, hanging gardens, and the occasional desert bighorn sheep on a ledge trail most visitors never see. Water here isn't a memory, it's still actively carving the canyon floor, inch by inch, the same slow force responsible for every wall towering over the trail. One honest note: this is what I noticed on one afternoon, in one conversation with my uncle. It's not a formal geological or policy study, and if I got something wrong here, I'd genuinely want to know.`,
+      `In Zion, the land doesn't just spread out, it reaches upward in giant, overwhelming walls. I spent the day deep in the canyon with my uncle, and at one point he stared straight up at the sheer cliffs of white and pink rock and said it felt like standing at the bottom of a cathedral carved by time. He's not wrong. The whole place is dominated by massive, iron-stained Navajo Sandstone, and up close you can see the cross-bedding layers left behind by ancient sand dunes, frozen in stone for roughly 190 million years. There's a quiet, reverent hum running through the canyon floor, broken mostly by the rushing cold water of the Virgin River winding through the shadow of the monoliths. But that quiet is managed, not accidental. Zion has been loved into a kind of crisis: a mandatory shuttle has run through the canyon since 2000 just to keep private cars from choking the one road in, and since 2022 climbing Angels Landing requires winning a permit lottery, because foot traffic alone was wearing down the chains and the rock itself. The real aha moment for me wasn't the scenery. It was realizing that the silence I was standing in had been engineered: millions of people want exactly this same quiet, and the park now has to ration it to protect the thing everyone came for. Unlike the dry stillness of the desert basin at Valley of Fire, life here hugs the riverbanks tightly: cottonwoods, hanging gardens, and the occasional desert bighorn sheep on a ledge trail most visitors never see. Water here isn't a memory, it's still actively carving the canyon floor, inch by inch, the same slow force responsible for every wall towering over the trail. One honest note: this is what I noticed on one afternoon, in one conversation with my uncle. It's not a formal geological or policy study, and if I got something wrong here, I'd genuinely want to know.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Zion National Park, Springdale, UT"],
@@ -260,6 +258,42 @@ const ENTRIES = [
       "14:05 — The walls closing in",
       "14:30 — Where the river does the carving",
       "14:20 — Light finding its way to the floor",
+    ],
+    count: 8,
+  },
+
+  {
+    slug: "lavaux",
+    date: "MAY 2023",
+    coords: "46.46°N 6.82°E",
+    location: "SAINT-SAPHORIN & CHEXBRES, CH",
+    tag: "Land & Climate",
+    title: `Lavaux: The Mirror of Lake Geneva`,
+    description:
+      `In Lavaux, the land doesn't just hold the vineyards, it cradles them on narrow stone terraces built by hand across almost a thousand years. I came up from Saint-Saphorin with coworkers for Caves Ouvertes, the open-cellar wine festival that runs through the region each spring, and the walk along the high wall near Chexbres kept opening onto the same unreal view: the vines, the water, the Alps across the lake. Over a glass of Chasselas, a local winemaker explained something growers here call the three suns. There's the sun overhead, the sun reflected back up off Lake Geneva, and the sun absorbed into the stone terrace walls during the day and released slowly back into the vines at night. For centuries that trio of heat sources is what made wine growing possible this far north, on slopes too steep for machines. What stuck with me was hearing that the same system is starting to work against itself. Long-term climate research on European vineyards shows grape harvests have shifted markedly earlier since the 1980s, as warming summers push ripening ahead of the calendar growers have followed for generations. Standing above Chexbres with the whole terraced hillside laid out below, it's an extraordinary view, but it's also a slow-moving case study: a community whose wine, architecture, and local identity were all built around a particular, delicate heat balance now being pushed off-center. One honest note: this is only what I picked up on a single afternoon in the vineyards and in conversation with the winemaker pouring our tasting. It isn't a formal study, and if I got a detail wrong, I'd want to know.`,
+    voices: [],
+    dataPoints: [
+      ["LOCATION", "Saint-Saphorin & Chexbres, Lavaux, Vaud, Switzerland"],
+      ["GEOLOGY", "Molasse and conglomerate ('pudding stone') bedrock, overlaid with moraine left by the retreating Rhône glacier"],
+      ["SCALE", "UNESCO World Heritage core zone of ~2,220 acres (898 hectares); terraces run roughly 30km along the lake's north shore"],
+      ["HERITAGE", "Terraces shaped into their current form by monks by the 11th–12th century; UNESCO World Heritage Site since 2007"],
+      ["CLIMATE", "Lake-moderated microclimate warmed by the 'three suns' (direct sun, lake reflection, heat stored in the terrace walls); long-term studies show European grape harvests shifting markedly earlier since the 1980s"],
+    ],
+    sources: [
+      "UNESCO World Heritage Centre, 'Lavaux, Vineyard Terraces'",
+      "Charlois, on the Lavaux terraces and the 'three suns'",
+      "Swiss-Spectator, on Lavaux's glacial and geological landscape",
+      "NASA Earth Science, on climate-driven shifts in European grape harvest timing",
+    ],
+    captions: [
+      "10:05 — The terraces falling toward the water",
+      "10:20 — A villa keeping watch over the vines",
+      "11:15 — Rows pointed straight at the lake",
+      "11:40 — Parked for the view, not by accident",
+      "12:30 — The paddle steamer, running the line it always has",
+      "13:10 — Saint-Saphorin, roof to roof",
+      "13:25 — The bell tower keeping watch over the water",
+      "15:00 — Caves Ouvertes, glass in hand",
     ],
     count: 8,
   },
