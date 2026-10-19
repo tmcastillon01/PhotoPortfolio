@@ -114,7 +114,6 @@ const ENTRIES = [
       ["DAILY TEMPERATURE SWING", "Roughly -5°C to 15°C between night and day"],
     ],
     sources: [
-      "Wikipedia, 'Vinicunca'",
       "Peru For Less, visitor and geography guide to Rainbow Mountain",
     ],
     captions: [
@@ -176,7 +175,6 @@ const ENTRIES = [
       ["REGIONAL PATTERN", "76% of high-Alps rockfalls occur in permafrost zones covering just 22% of the terrain (Eastern Alps study)"],
     ],
     sources: [
-      "Wikipedia, 'Lower Grindelwald Glacier'",
       "SWI swissinfo.ch, reporting on the 2006 Eiger rockfall and glacier flood risk",
       "Earth Surface Processes and Landforms, permafrost/rockfall study, Eastern Alps",
     ],
@@ -210,7 +208,6 @@ const ENTRIES = [
       ["CLIMATE", "~4–6.5in rainfall/year; summer rock-surface temperatures can exceed 150°F"],
     ],
     sources: [
-      "Wikipedia, 'Aztec Sandstone'",
       "Nevada State Parks, Valley of Fire climate and geology overview",
     ],
     captions: [
@@ -245,7 +242,6 @@ const ENTRIES = [
       ["MANAGED ACCESS", "Mandatory canyon shuttle since 2000; Angels Landing permit lottery since 2022 due to trail and chain wear"],
     ],
     sources: [
-      "Wikipedia, 'Zion National Park'",
       "National Park Service, Zion National Park visitor and geology overview",
       "National Park Service, Angels Landing wilderness permit program announcements (2022–present)",
     ],
