@@ -102,7 +102,7 @@ const ENTRIES = [
     date: "MAR 2025",
     coords: "13.85°S 71.30°W",
     location: "VINICUNCA, PE",
-    tag: "Land & Climate",
+    tag: "Land & Climate", "Wildlife & Ecology"
     title: `Vinicunca: Life on the Rainbow Mountain`,
     description:
       `Vinicunca's color gets all the attention, but the people who work that trail are what actually keeps the mountain functional for the thousands who climb it. Local families lease their own horses and alpacas for the ascent, walk the route on foot beside tourists who paid for the ride, and do it through weather that can turn from clear sky to hard fog inside an hour, the air thin enough that talking too fast leaves you short of breath. The glaciers above towns like this one are retreating within a single generation's memory, part of a broader, well-documented warming across the Andes, a fact that rarely makes it into a photo of a horse against a mountain. I didn't ask enough on this trip about how families here are adapting to that. Next time, I want more of their words in this space, not just my read on the scene.`,
