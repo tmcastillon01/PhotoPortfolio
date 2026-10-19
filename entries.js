@@ -102,7 +102,7 @@ const ENTRIES = [
     date: "MAR 2025",
     coords: "13.85°S 71.30°W",
     location: "VINICUNCA, PE",
-    tag: "Land & Climate", "Wildlife & Ecology"
+    tag: "Land & Climate",
     title: `Vinicunca: Life on the Rainbow Mountain`,
     description:
       `Vinicunca's color gets all the attention, but the people who work that trail are what actually keeps the mountain functional for the thousands who climb it. Local families lease their own horses and alpacas for the ascent, walk the route on foot beside tourists who paid for the ride, and do it through weather that can turn from clear sky to hard fog inside an hour, the air thin enough that talking too fast leaves you short of breath. The glaciers above towns like this one are retreating within a single generation's memory, part of a broader, well-documented warming across the Andes, a fact that rarely makes it into a photo of a horse against a mountain. I didn't ask enough on this trip about how families here are adapting to that. Next time, I want more of their words in this space, not just my read on the scene.`,
@@ -266,7 +266,7 @@ const ENTRIES = [
     tag: "Land & Climate",
     title: `Lavaux: The Mirror of Lake Geneva`,
     description:
-      `In Lavaux, the land doesn't just hold the vineyards—it cradles them on steep, hand-built stone terraces built over centuries. I walked up from Saint-Saphorin toward Chexbres with coworkers for Caves Ouvertes, the local spring wine festival, and the view over Lake Geneva was unreal. Over a glass of Chasselas, a winemaker explained the concept of the "Three Suns": the direct sunlight, the heat reflecting off the lake, and the warmth stored in the stone walls and released overnight.
+      `In Lavaux, the land doesn't just hold the vineyards, it cradles them on steep, hand-built stone terraces built over centuries. I walked up from Saint-Saphorin toward Chexbres with coworkers for Caves Ouvertes, the local spring wine festival, and the view over Lake Geneva was unreal. Over a glass of Chasselas, a winemaker explained the concept of the "Three Suns": the direct sunlight, the heat reflecting off the lake, and the warmth stored in the stone walls and released overnight.
 For centuries, that triple-heat system made wine growing possible on these steep Alpine slopes. But as warming summers push harvests earlier into the year, that same microclimate is starting to work against itself. Standing above Chexbres, it’s an extraordinary view, but also a quiet reminder of a community whose wine and identity were built on a delicate balance now being pushed off-center.
 One honest note: this is just what I picked up on a single afternoon in the vineyards. It isn't a formal study, and if I got a detail wrong, I'd want to know.`,
     voices: [],
