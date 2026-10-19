@@ -102,7 +102,7 @@
         <div class="entry-col-main">
           <h1 class="entry-title">${entry.title}</h1>
           <p class="entry-desc">${entry.description}</p>
-          <div class="card-tags" style="margin-top:18px;">${entry.tag ? `<span>${entry.tag}</span>` : ''}</div>
+          <div class="card-tags" style="margin-top:18px;">${(Array.isArray(entry.tags) ? entry.tags : (entry.tag ? [entry.tag] : [])).map(t => `<span>${t}</span>`).join('')}</div>
         </div>
       </div>
       <div class="contact-sheet" style="margin-left:0; margin-top:56px;">${frames}</div>

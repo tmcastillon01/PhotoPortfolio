@@ -130,21 +130,28 @@
     document.getElementById('roll-count').textContent =
       `${String(ENTRIES.length).padStart(2, '0')} roll${ENTRIES.length !== 1 ? 's' : ''} developed`;
 
-    // ---- tag filter pills (single tag per entry) ----
-    const allTags = [...new Set(ENTRIES.map(e => e.tag).filter(Boolean))].sort();
+    // ---- tag filter pills (an entry can carry one or more tags) ----
+    // entryTags() reads the current `tags` array, but falls back to a
+    // legacy single `tag` string so older entries keep working.
+    function entryTags(e) {
+      if (Array.isArray(e.tags)) return e.tags.filter(Boolean);
+      return e.tag ? [e.tag] : [];
+    }
+
+    const allTags = [...new Set(ENTRIES.flatMap(entryTags))].sort();
     const tagRoot = document.getElementById('tag-filters');
     let activeTag = null;
     let searchQuery = '';
 
     function matchesSearch(entry, q) {
       if (!q) return true;
-      const haystack = `${entry.title} ${entry.location} ${entry.tag || ''} ${entry.description}`.toLowerCase();
+      const haystack = `${entry.title} ${entry.location} ${entryTags(entry).join(' ')} ${entry.description}`.toLowerCase();
       return haystack.includes(q);
     }
 
     function renderGrid() {
       const grid = document.getElementById('journal-grid');
-      let visible = activeTag ? sorted.filter(e => e.tag === activeTag) : sorted;
+      let visible = activeTag ? sorted.filter(e => entryTags(e).includes(activeTag)) : sorted;
       visible = visible.filter(e => matchesSearch(e, searchQuery));
       if (visible.length === 0) {
         grid.innerHTML = `<div style="grid-column:1/-1; padding:24px 0; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-dim);">No entries match "${searchQuery}".</div>`;
@@ -156,7 +163,7 @@
           <div class="card-body">
             <div class="card-meta">${entry.date} <span class="loc">— ${entry.location}</span></div>
             <h3 class="card-title">${entry.title}</h3>
-            <div class="card-tags">${entry.tag ? `<span>${entry.tag}</span>` : ''}</div>
+            <div class="card-tags">${entryTags(entry).map(t => `<span>${t}</span>`).join('')}</div>
           </div>
         </a>
       `).join('');

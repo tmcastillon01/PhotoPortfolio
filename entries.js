@@ -9,7 +9,11 @@
 // so a stray "quote" or 'apostrophe' in your text can't break the
 // page. Just don't type a literal backtick (`) inside the text.
 //
-// tags: keep it to ONE tag per entry for now.
+// tags: an array -- one tag is fine (["Land & Climate"]), or add more
+// (["Land & Climate", "Wildlife & Ecology"]) when an entry genuinely
+// spans categories. An entry with multiple tags shows up under each
+// one in the Journal's filter pills, and each tag gets its own small
+// pill on the card. Don't overdo it -- 1-2 tags keeps it meaningful.
 //
 // voices: TODO -- once you have names (with consent) or direct
 // quotes from people in a roll, add them here as
@@ -37,7 +41,7 @@ const ENTRIES = [
     date: "NOV 2025",
     coords: "09.02°N 38.75°E",
     location: "ADDIS ABABA, ET",
-    tag: "Labor & Industry",
+    tags: ["Labor & Industry"],
     title: `Merkato: The Hide Trade of Addis Ababa`,
     description:
       `Merkato runs on hands most of the city never sees up close. Said to be the largest open-air market in Africa, its hide sellers work outdoors from early morning, stretching raw skins, grading the quality, folding them into rust-orange stacks that will become shoes and bags and belts sold an ocean away, part of an informal trade that a great many households here depend on directly, with little of the recognition that keeps a market its size running. Nobody performed for the camera; they kept working, calling prices to buyers I couldn't see, the only rhythm the wet slap of hide against wood and someone's radio two stalls over. I didn't come away with names this time, which is a gap I want to close on the next visit, with consent, so this is credited as their skill and their trade, not just described from the outside.`,
@@ -69,7 +73,7 @@ const ENTRIES = [
     date: "JUN 2025",
     coords: "13.83°S 76.28°W",
     location: "ISLAS BALLESTAS, PE",
-    tag: "Wildlife & Ecology",
+    tags: ["Wildlife & Ecology"],
     title: `Islas Ballestas: The Poor Man's Galápagos`,
     description:
       `Islas Ballestas exists because of what nests there. Sea lions, Humboldt penguins, and dense colonies of seabirds whose droppings once made this coastline one of Peru's most valuable 19th-century exports, the foundation of an entire economy built on guano before it became a marine reserve. Today the boats run on tourism instead, steered by local operators whose income depends on the health of an ecosystem they don't control. Warmer Pacific waters during El Niño years can gut the fish stocks these colonies depend on, which makes a bad ocean year here somebody's actual income, not an abstraction. The ride out was loud, engine noise and gulls arguing overhead, then almost nothing once we cut the motor near the rock and let the colony take over. I spent the morning on the animals and the rock they live on, and not enough time asking the people steering the boats what they've actually watched change out there. That's on me to fix next trip.`,
@@ -102,7 +106,7 @@ const ENTRIES = [
     date: "MAR 2025",
     coords: "13.85°S 71.30°W",
     location: "VINICUNCA, PE",
-    tag: "Land & Climate",
+    tags: ["Land & Climate", "Wildlife & Ecology"],
     title: `Vinicunca: Life on the Rainbow Mountain`,
     description:
       `Vinicunca's color gets all the attention, but the people who work that trail are what actually keeps the mountain functional for the thousands who climb it. Local families lease their own horses and alpacas for the ascent, walk the route on foot beside tourists who paid for the ride, and do it through weather that can turn from clear sky to hard fog inside an hour, the air thin enough that talking too fast leaves you short of breath. The glaciers above towns like this one are retreating within a single generation's memory, part of a broader, well-documented warming across the Andes, a fact that rarely makes it into a photo of a horse against a mountain. I didn't ask enough on this trip about how families here are adapting to that. Next time, I want more of their words in this space, not just my read on the scene.`,
@@ -133,7 +137,7 @@ const ENTRIES = [
     date: "OCT 2022",
     coords: "43.70°N 7.27°E",
     location: "NICE, FR",
-    tag: "Personal",
+    tags: ["Personal"],
     title: `Nice: Coastline at Low Tide`,
     description:
       `This one sits apart from the rest of the journal: a personal trip along the Côte d'Azur, not a documentary assignment, and I'd rather say that plainly than dress it up as more than it is. Pastel shutters and centuries-old facades share a block with the modern city without much friction. Mostly this is a record of the beach, not sand here, but smooth gray stones you trade your shoes for, sitting until the sky burns down to orange, gulls arguing somewhere behind you and the waves doing most of the talking. There's a particular quiet to how the day ends there, watching the tide, not needing to fill the space between you and whoever you're sitting next to.`,
@@ -163,7 +167,7 @@ const ENTRIES = [
     date: "MAR 2026",
     coords: "46.62°N 8.03°E",
     location: "GRINDELWALD, CH",
-    tag: "Land & Climate",
+    tags: ["Land & Climate"],
     title: `Grindelwald: The Architecture of Instability`,
     description:
       `In Grindelwald, the landscape is in a state of rapid transition. From a distance, peaks like the Eiger and the Wetterhorn look permanent, carved in stone and ice. Up close, the mountain is losing its foundation. This documentation focuses on the intersection of winter tourism and structural vulnerability, specifically how ski infrastructure clings to slopes that are increasingly destabilized by thawing permafrost and retreating glaciers. It's a striking contrast to watch people ride lifts and ski through a landscape that feels solid, while the rockfaces above are quietly losing their integrity, the only sound most mornings the hum of lift cables and snow compressing under boots. These images aren't just a record of a ski season. They're a study of a fragile ecosystem, documenting the moment human activity meets the accelerating, invisible shift of a warming mountain.`,
@@ -196,7 +200,7 @@ const ENTRIES = [
     date: "APR 2026",
     coords: "36.43°N 114.53°W",
     location: "VALLEY OF FIRE, NV",
-    tag: "Land & Climate",
+    tags: ["Land & Climate"],
     title: `Valley of Fire: The Aesthetics of Aridity`,
     description:
       `In the Mojave, the land doesn't really hide how fragile it is. I spent the day out here with my uncle, and at one point he pointed at the rock and said it looked almost scorched, like the sun had just been sitting on it too long. He's not wrong. The whole place is that vibrant, iron-rich Aztec sandstone, and up close it really does look burnt rather than just red. There's a heavy kind of quiet out there too, the kind you only get somewhere this dry, broken only by a dry wind that never really stops, just changes pitch depending on which rock it's moving past. Everything alive in that basin is holding on by a thread, and you can feel it. Water here is more of a memory than a resource. The desert plants look gnarled and stubborn, the rock keeps getting worn down by wind and heat instead of rain, and the whole landscape feels like it's negotiating with the dryness just to stay standing. It's not just a nice view. It's closer to a record of a place living right at the edge of what it can handle. One honest note though: this is just what I noticed on one afternoon, in one conversation with my uncle. It's not a geological study, and if I got something wrong here, I'd genuinely want to know.`,
@@ -228,7 +232,7 @@ const ENTRIES = [
     date: "SEP 2026",
     coords: "37.30°N 113.03°W",
     location: "ZION NATIONAL PARK, UT",
-    tag: "Land & Climate",
+    tags: ["Land & Climate"],
     title: `Zion: The Grandeur of Verticality`,
     description:
       `In Zion, the land doesn't just spread out, it reaches upward in giant, overwhelming walls. I spent the day deep in the canyon with my family, and at one point they all stared straight up at the sheer cliffs of white and pink rock and said it felt like standing at the bottom of a cathedral carved by time. They are not wrong. The whole place is dominated by massive, iron-stained Navajo Sandstone, and up close you can see the cross-bedding layers left behind by ancient sand dunes, frozen in stone for roughly 190 million years. There's a quiet, reverent hum running through the canyon floor, broken mostly by the rushing cold water of the Virgin River winding through the shadow of the monoliths. But that quiet is managed, not accidental. Zion has been loved into a kind of crisis: a mandatory shuttle has run through the canyon since 2000 just to keep private cars from choking the one road in, and since 2022 climbing Angels Landing requires winning a permit lottery, because foot traffic alone was wearing down the chains and the rock itself. The real aha moment for me wasn't the scenery. It was realizing that the silence I was standing in had been engineered: millions of people want exactly this same quiet, and the park now has to ration it to protect the thing everyone came for. Unlike the dry stillness of the desert basin at Valley of Fire, life here hugs the riverbanks tightly: cottonwoods, hanging gardens, and the occasional desert bighorn sheep on a ledge trail most visitors never see. Water here isn't a memory, it's still actively carving the canyon floor, inch by inch, the same slow force responsible for every wall towering over the trail. One honest note: this is what I noticed on one afternoon, in one conversation with my uncle. It's not a formal geological or policy study, and if I got something wrong here, I'd genuinely want to know.`,
@@ -263,7 +267,7 @@ const ENTRIES = [
     date: "MAY 2023",
     coords: "46.46°N 6.82°E",
     location: "SAINT-SAPHORIN & CHEXBRES, CH",
-    tag: "Land & Climate",
+    tags: ["Land & Climate"],
     title: `Lavaux: The Mirror of Lake Geneva`,
     description:
       `In Lavaux, the land doesn't just hold the vineyards, it cradles them on steep, hand-built stone terraces built over centuries. I walked up from Saint-Saphorin toward Chexbres with coworkers for Caves Ouvertes, the local spring wine festival, and the view over Lake Geneva was unreal. Over a glass of Chasselas, a winemaker explained the concept of the "Three Suns": the direct sunlight, the heat reflecting off the lake, and the warmth stored in the stone walls and released overnight.
@@ -302,7 +306,7 @@ One honest note: this is just what I picked up on a single afternoon in the vine
   //   date: "SEP 2026",
   //   coords: "00.00°N 00.00°E",
   //   location: "CITY, COUNTRY",
-  //   tag: "Labor & Industry",
+  //   tags: ["Labor & Industry"],
   //   title: `Entry Title`,
   //   description: `Lead with the place and the people, not the trip.`,
   //   voices: [],
