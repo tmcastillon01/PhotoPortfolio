@@ -226,6 +226,42 @@ const ENTRIES = [
     count: 8,
   },
 
+  {
+    slug: "zion",
+    date: "SEP 2026",
+    coords: "37.30°N 113.03°W",
+    location: "ZION NATIONAL PARK, UT",
+    tag: "Land & Climate",
+    title: `Zion: The Grandeur of Verticality`,
+    description:
+      `In Zion, the land doesn't just spread out, it reaches upward in giant, overwhelming walls. I spent the day deep in the canyon with my uncle, and at one point he stared straight up at the sheer cliffs of white and pink rock and said it felt like standing at the bottom of a cathedral carved by time. He's not wrong. The whole place is dominated by massive, iron-stained Navajo Sandstone, and up close you can see the cross-bedding layers left behind by ancient sand dunes, frozen in stone for roughly 190 million years. There's a quiet, reverent hum running through the canyon floor, broken mostly by the rushing cold water of the Virgin River winding through the shadow of the monoliths. But that quiet is managed, not accidental. Zion has been loved into a kind of crisis: a mandatory shuttle has run through the canyon since 2000 just to keep private cars from choking the one road in, and since 2022 climbing Angels Landing requires winning a permit lottery, because foot traffic alone was wearing down the chains and the rock itself. The real aha moment for me wasn't the scenery. It was realizing that the silence I was standing in had been engineered: millions of people want exactly this same quiet, and the park now has to ration it to protect the thing everyone came for. Unlike the dry stillness of the desert basin at Valley of Fire, life here hugs the riverbanks tightly: cottonwoods, hanging gardens, and the occasional desert bighorn sheep on a ledge trail most visitors never see. Water here isn't a memory, it's still actively carving the canyon floor, inch by inch, the same slow force responsible for every wall towering over the trail. One honest note: this is what I noticed on one afternoon, in one conversation with my uncle. It's not a formal geological or policy study, and if I got something wrong here, I'd genuinely want to know.`,
+    voices: [],
+    dataPoints: [
+      ["LOCATION", "Zion National Park, Springdale, UT"],
+      ["GEOLOGY", "Navajo Sandstone, Early Jurassic, ~190 million years old, wind-deposited (aeolian) dune origin"],
+      ["SCALE", "~148,000 acres; elevation 3,666–8,726 ft"],
+      ["CLIMATE", "~16–18in rainfall/year; summer temperatures frequently exceed 100°F"],
+      ["VISITOR PRESSURE", "Among the most-visited U.S. national parks, drawing well over 4 million visitors in recent years"],
+      ["MANAGED ACCESS", "Mandatory canyon shuttle since 2000; Angels Landing permit lottery since 2022 due to trail and chain wear"],
+    ],
+    sources: [
+      "Wikipedia, 'Zion National Park'",
+      "National Park Service, Zion National Park visitor and geology overview",
+      "National Park Service, Angels Landing wilderness permit program announcements (2022–present)",
+    ],
+    captions: [
+      "10:15 — The Court of the Patriarchs, before the crowd catches up",
+      "11:40 — Prickly pear, heavy with fruit",
+      "10:30 — White rock giving way to red",
+      "09:05 — The trail, shoulder to shoulder",
+      "13:10 — Looking out from inside the rock",
+      "14:05 — The walls closing in",
+      "14:30 — Where the river does the carving",
+      "14:20 — Light finding its way to the floor",
+    ],
+    count: 8,
+  },
+
   // Next entry goes here, e.g.:
   // {
   //   slug: "example",
