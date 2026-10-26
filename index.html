@@ -66,6 +66,7 @@
   </div>
 
   <div class="tag-filters" id="tag-filters"></div>
+  <div class="tag-filters region-filters" id="region-filters"></div>
   <div class="journal-grid" id="journal-grid"></div>
 
   <section class="contact-section" id="contact">
@@ -146,15 +147,25 @@
     let activeTag = null;
     let searchQuery = '';
 
+    // ---- region filter pills (second, independent filter row) ----
+    // Fixed continent order rather than alphabetical/derived from data,
+    // so the row reads the same regardless of which regions are in use.
+    const REGION_ORDER = ['Americas', 'Asia', 'Europe', 'Africa', 'Antarctica'];
+    const usedRegions = new Set(ENTRIES.map(e => e.region).filter(Boolean));
+    const allRegions = REGION_ORDER.filter(r => usedRegions.has(r));
+    const regionRoot = document.getElementById('region-filters');
+    let activeRegion = null;
+
     function matchesSearch(entry, q) {
       if (!q) return true;
-      const haystack = `${entry.title} ${entry.location} ${entryTags(entry).join(' ')} ${entry.description}`.toLowerCase();
+      const haystack = `${entry.title} ${entry.location} ${entry.region || ''} ${entryTags(entry).join(' ')} ${entry.description}`.toLowerCase();
       return haystack.includes(q);
     }
 
     function renderGrid() {
       const grid = document.getElementById('journal-grid');
       let visible = activeTag ? sorted.filter(e => entryTags(e).includes(activeTag)) : sorted;
+      visible = activeRegion ? visible.filter(e => e.region === activeRegion) : visible;
       visible = visible.filter(e => matchesSearch(e, searchQuery));
       if (visible.length === 0) {
         grid.innerHTML = `<div style="grid-column:1/-1; padding:24px 0; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-dim);">No entries match "${searchQuery}".</div>`;
@@ -185,6 +196,20 @@
       });
     }
 
+    function renderRegionPills() {
+      if (allRegions.length === 0) { regionRoot.innerHTML = ''; return; }
+      const pills = [`<button class="tag-pill ${activeRegion === null ? 'active' : ''}" data-region="">All regions</button>`]
+        .concat(allRegions.map(r => `<button class="tag-pill ${activeRegion === r ? 'active' : ''}" data-region="${r}">${r}</button>`));
+      regionRoot.innerHTML = pills.join('');
+      regionRoot.querySelectorAll('.tag-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeRegion = btn.dataset.region || null;
+          renderRegionPills();
+          renderGrid();
+        });
+      });
+    }
+
     // ---- search toggle + live filter ----
     const searchWrap = document.getElementById('search-wrap');
     const searchToggle = document.getElementById('search-toggle');
@@ -207,6 +232,7 @@
     });
 
     renderPills();
+    renderRegionPills();
     renderGrid();
   }
 

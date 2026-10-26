@@ -15,6 +15,11 @@
 // one in the Journal's filter pills, and each tag gets its own small
 // pill on the card. Don't overdo it -- 1-2 tags keeps it meaningful.
 //
+// region: ONE of "Americas", "Asia", "Europe", "Africa", "Antarctica".
+// A second, separate filter row on the Journal page, independent of
+// tags -- a visitor can filter by tag AND region at the same time.
+//
+
 // voices: TODO -- once you have names (with consent) or direct
 // quotes from people in a roll, add them here as
 // { name: "...", quote: "..." }. Never fill this with anything
@@ -41,6 +46,7 @@ const ENTRIES = [
     date: "NOV 2025",
     coords: "09.02°N 38.75°E",
     location: "ADDIS ABABA, ET",
+    region: "Africa",
     tags: ["Labor & Industry"],
     title: `Merkato: The Hide Trade of Addis Ababa`,
     description:
@@ -73,6 +79,7 @@ const ENTRIES = [
     date: "JUN 2025",
     coords: "13.83°S 76.28°W",
     location: "ISLAS BALLESTAS, PE",
+    region: "Americas",
     tags: ["Wildlife & Ecology"],
     title: `Islas Ballestas: The Poor Man's Galápagos`,
     description:
@@ -106,6 +113,7 @@ const ENTRIES = [
     date: "MAR 2025",
     coords: "13.85°S 71.30°W",
     location: "VINICUNCA, PE",
+    region: "Americas",
     tags: ["Land & Climate", "Wildlife & Ecology"],
     title: `Vinicunca: Life on the Rainbow Mountain`,
     description:
@@ -137,6 +145,7 @@ const ENTRIES = [
     date: "OCT 2022",
     coords: "43.70°N 7.27°E",
     location: "NICE, FR",
+    region: "Europe",
     tags: ["Personal"],
     title: `Nice: Coastline at Low Tide`,
     description:
@@ -167,6 +176,7 @@ const ENTRIES = [
     date: "MAR 2026",
     coords: "46.62°N 8.03°E",
     location: "GRINDELWALD, CH",
+    region: "Europe",
     tags: ["Land & Climate"],
     title: `Grindelwald: The Architecture of Instability`,
     description:
@@ -200,6 +210,7 @@ const ENTRIES = [
     date: "APR 2026",
     coords: "36.43°N 114.53°W",
     location: "VALLEY OF FIRE, NV",
+    region: "Americas",
     tags: ["Land & Climate"],
     title: `Valley of Fire: The Aesthetics of Aridity`,
     description:
@@ -232,6 +243,7 @@ const ENTRIES = [
     date: "SEP 2026",
     coords: "37.30°N 113.03°W",
     location: "ZION NATIONAL PARK, UT",
+    region: "Americas",
     tags: ["Land & Climate"],
     title: `Zion: The Grandeur of Verticality`,
     description:
@@ -267,6 +279,7 @@ const ENTRIES = [
     date: "MAY 2023",
     coords: "46.46°N 6.82°E",
     location: "SAINT-SAPHORIN & CHEXBRES, CH",
+    region: "Europe",
     tags: ["Land & Climate"],
     title: `Lavaux: The Mirror of Lake Geneva`,
     description:
@@ -306,6 +319,7 @@ One honest note: this is just what I picked up on a single afternoon in the vine
   //   date: "SEP 2026",
   //   coords: "00.00°N 00.00°E",
   //   location: "CITY, COUNTRY",
+  //   region: "Americas", // Americas | Asia | Europe | Africa | Antarctica
   //   tags: ["Labor & Industry"],
   //   title: `Entry Title`,
   //   description: `Lead with the place and the people, not the trip.`,
