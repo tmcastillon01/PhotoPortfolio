@@ -59,7 +59,6 @@ const ENTRIES = [
       ["PRIMARY TRADE", "Wholesale agricultural goods, especially coffee"],
     ],
     sources: [
-      "Wikipedia, 'Addis Mercato'",
       "Corroborated by multiple independent travel and academic sources; original figure is a long-standing estimate, not independently audited",
     ],
     captions: [
