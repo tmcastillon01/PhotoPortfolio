@@ -126,6 +126,7 @@ const ENTRIES = [
     ],
     sources: [
       "Peru For Less, visitor and geography guide to Rainbow Mountain",
+      "IPCC AR6 Working Group I (2021), Chapter 9: Ocean, Cryosphere and Sea Level Change; IPCC SROCC (2019), Chapter 2: High Mountain Areas",
     ],
     captions: [
       "07:10 — Dressed for the tourists, unbothered by it",
