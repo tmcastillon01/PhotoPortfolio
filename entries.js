@@ -173,7 +173,7 @@ const ENTRIES = [
 
   {
     slug: "grindelwald",
-    date: "MAR 2026",
+    date: "MAR 2024",
     coords: "46.62°N 8.03°E",
     location: "GRINDELWALD, CH",
     region: "Europe",
@@ -412,7 +412,7 @@ const ENTRIES = [
   },
   {
     slug: "mombasa",
-    date: "OCT 2025",
+    date: "APR 2022",
     coords: "04.04°S 39.67°E",
     location: "BAMBURI, NYALI & MOMBASA, KE",
     region: "Africa",
@@ -445,7 +445,7 @@ const ENTRIES = [
   },
   {
     slug: "bethlehem",
-    date: "JAN 2026",
+    date: "JAN 2023",
     coords: "31.71°N 35.22°E",
     location: "BETHLEHEM & JERUSALEM, WEST BANK",
     region: "Asia",
