@@ -379,7 +379,7 @@ const ENTRIES = [
   },
   {
     slug: "bethlehem",
-    date: "JAN 2026",
+    date: "DEC 2023",
     coords: "31.71°N 35.22°E",
     location: "BETHLEHEM & JERUSALEM, WEST BANK",
     region: "Asia",
@@ -408,7 +408,7 @@ const ENTRIES = [
   },
   {
     slug: "crete",
-    date: "JUL 2025",
+    date: "JUL 2022",
     coords: "35.24°N 24.81°E",
     location: "CHANIA, GEORGIOUPOLI, LAKE KOURNAS & TRIOPETRA, CRETE, GR",
     region: "Europe",
