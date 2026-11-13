@@ -470,7 +470,7 @@ const ENTRIES = [
   },
   {
     slug: "mombasa",
-    date: "OCT 2025",
+    date: "APR 2022",
     coords: "04.04°S 39.67°E",
     location: "BAMBURI, NYALI & MOMBASA, KE",
     region: "Africa",
