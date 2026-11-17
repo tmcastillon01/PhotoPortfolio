@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="alternate" type="application/rss+xml" title="field/notes" href="https://tmcastillon01.github.io/PhotoPortfolio/feed.xml">
 </head>
 <body>
 
@@ -40,17 +41,23 @@
       <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
       <p class="footer-copyright">© Timothy Castillon 2026</p>
     </div>
+    <div class="subscribe" data-subscribe="footer"></div>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-close" id="lightbox-close">Close ✕</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lightbox-count" id="lightbox-count"></div>
+  <button type="button" class="lightbox-close" id="lightbox-close">Close ✕</button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&larr;</button>
   <div class="lightbox-frame">
     <img id="lightbox-img" src="" alt="">
     <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">&rarr;</button>
 </div>
 
+<script src="lightbox.js"></script>
+<script src="subscribe.js"></script>
 <script src="projects.js"></script>
 <script>
   function renderProject() {
@@ -122,23 +129,8 @@
       ${postGridHtml}
     `;
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    document.addEventListener('click', (e) => {
-      const frame = e.target.closest('.frame');
-      if (frame) {
-        const img = frame.querySelector('img');
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxCaption.textContent = frame.dataset.caption || '';
-        lightboxCaption.style.display = frame.dataset.caption ? 'block' : 'none';
-        lightbox.classList.add('open');
-      }
-    });
-    document.getElementById('lightbox-close').addEventListener('click', () => lightbox.classList.remove('open'));
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+    initLightbox();
+    mountSubscribe();
   }
 
   try {
