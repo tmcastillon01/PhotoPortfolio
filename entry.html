@@ -57,7 +57,7 @@
   <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">&rarr;</button>
 </div>
 
-<div class="map-modal" id="map-modal" role="dialog" aria-modal="true" aria-label="Location map">
+<div class="map-modal" id="map-modal" hidden role="dialog" aria-modal="true" aria-label="Location map">
   <div class="map-panel">
     <div class="map-bar">
       <span class="map-bar-title" id="map-title"></span>
@@ -72,6 +72,12 @@
 <script src="subscribe.js"></script>
 <script src="entries.js"></script>
 <script>
+  // CARTO's dark map tiles need a free key (since 25 Sep 2026). Get one at
+  // https://www.carto.com/basemaps/apikey/ and paste it between the quotes.
+  // Restrict it to tmcastillon01.github.io in CARTO's form. While this is
+  // empty, the map falls back to plain OpenStreetMap tiles in a dark filter.
+  const CARTO_KEY = 'cb1_5at4_1_21c641dcb2c60a3b54efe863';
+
   // "16.58°N 120.70°E" -> { lat: 16.58, lng: 120.70 }. Returns null if the
   // text doesn't match, so a malformed coords string never breaks the page.
   function parseCoords(str) {
@@ -98,6 +104,7 @@
     let map = null;
 
     function openMap() {
+      modal.hidden = false;
       modal.classList.add('open');
       document.body.classList.add('map-open');
       closeBtn.focus();
@@ -107,11 +114,28 @@
       }
       if (!map) {
         map = L.map(canvas, { center: [pos.lat, pos.lng], zoom: 9, minZoom: 3, scrollWheelZoom: false, worldCopyJump: true });
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-          subdomains: 'abcd',
+        const key = CARTO_KEY.trim();
+        const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           maxZoom: 19
-        }).addTo(map);
+        });
+        function useOsm() { canvas.classList.add('map-osm'); osm.addTo(map); }
+        if (key) {
+          const carto = L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key=' + encodeURIComponent(key), {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            maxZoom: 19,
+            detectRetina: true
+          }).addTo(map);
+          // If CARTO's tiles never load (wrong URL, bad key), switch to plain OSM tiles.
+          let loaded = false, failed = 0;
+          carto.on('tileload', () => { loaded = true; });
+          carto.on('tileerror', () => {
+            failed += 1;
+            if (!loaded && failed >= 2 && map.hasLayer(carto)) { map.removeLayer(carto); useOsm(); }
+          });
+        } else {
+          useOsm();
+        }
         const icon = L.divIcon({ className: 'map-marker', html: '<span></span>', iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -14] });
         L.marker([pos.lat, pos.lng], { icon, title: entry.location, keyboard: false })
           .addTo(map)
@@ -127,6 +151,7 @@
 
     function closeMap() {
       modal.classList.remove('open');
+      modal.hidden = true;
       document.body.classList.remove('map-open');
       btn.focus();
     }

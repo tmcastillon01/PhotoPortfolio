@@ -216,6 +216,8 @@ body.map-open{ overflow:hidden; }
 /* Leaflet theming. --map-tint pulls CARTO's neutral grey toward the navy
    palette; tweak or set to "none" for the stock Dark Matter look. */
 .map-canvas{ --map-tint:sepia(1) hue-rotate(182deg) saturate(1.5) brightness(1.05); }
+/* fallback when no CARTO key is set: darken the standard OpenStreetMap tiles */
+.map-canvas.map-osm{ --map-tint:invert(1) hue-rotate(200deg) brightness(0.9) contrast(0.95) saturate(0.6); }
 .map-canvas .leaflet-tile-pane{ filter:var(--map-tint); }
 .leaflet-container{ font-family:'IBM Plex Mono', monospace; background:var(--bg); }
 .leaflet-control-attribution{
