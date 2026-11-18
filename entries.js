@@ -474,7 +474,7 @@ const ENTRIES = [
   },
   {
     slug: "crete",
-    date: "JUL 2025",
+    date: "JUL 2022",
     coords: "35.24°N 24.81°E",
     location: "CHANIA, GEORGIOUPOLI, LAKE KOURNAS & TRIOPETRA, CRETE, GR",
     region: "Europe",
