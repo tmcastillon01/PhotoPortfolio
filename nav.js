@@ -2,7 +2,7 @@
 // three-line menu button on small screens. Each page has an empty
 //   <header id="site-header" data-current="projects" data-hero></header>
 // followed by <script src="nav.js"></script>.
-//   data-current  highlights one link (about, projects, journal, contact, subscribe)
+//   data-current  highlights one link (about, projects, journal, board, contact, subscribe)
 //   data-hero     the page opens on a full-bleed photo, so the bar stays
 //                 transparent until you scroll
 (function () {
@@ -14,6 +14,7 @@
     ['About', 'index.html#about', 'about'],
     ['Projects', 'projects.html', 'projects'],
     ['Journal', 'index.html#journal', 'journal'],
+    ['Board', 'board.html', 'board'],
     ['Contact', 'index.html#contact', 'contact'],
     ['Subscribe', '#subscribe', 'subscribe'],
   ];

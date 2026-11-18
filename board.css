@@ -1,0 +1,25 @@
+/* The Board: proof-sheet view of every roll. Loaded after style.css. */
+.board-title{ font-family:'Fraunces', serif; font-weight:400; font-size:clamp(32px,5vw,48px); line-height:1.1; margin:0 0 14px; }
+.board-title em{ color:var(--gold); }
+.board-sub{ font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.7; color:var(--ink-dim); max-width:70ch; margin:0; }
+.board-head{ padding-bottom:28px; }
+.roll{ margin:0 0 30px; }
+.roll-head{ display:flex; justify-content:space-between; align-items:baseline; gap:6px 18px; flex-wrap:wrap; margin-bottom:8px;
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
+.roll-head a{ color:var(--gold); text-decoration:none; }
+.roll-head a:hover{ text-decoration:underline; }
+.roll-head span{ color:var(--ink-dim); }
+.board .contact-sheet{ grid-template-columns:repeat(8, minmax(0,1fr)); gap:6px; }
+.board .frame{ aspect-ratio:auto; background:#000; padding:5px 5px 17px; overflow:visible; }
+.board .frame img{ aspect-ratio:1/1; height:auto; filter:none; transition:filter .25s ease; }
+.board .frame:hover img{ transform:none; filter:brightness(1.08); }
+.board .frame::before{ top:auto; bottom:3px; left:6px; opacity:1; z-index:1; font-size:9px; color:var(--gold); letter-spacing:.1em; }
+.board .frame::after{ box-shadow:none; }
+.board .frame.kept::after{
+  inset:-3px -3px 12px -3px; border:2.5px solid #ff5a47; border-radius:50% 46% 52% 48% / 48% 52% 46% 50%;
+  transform:rotate(-3deg); pointer-events:none; z-index:2;
+}
+.board .frame:hover{ outline:1px solid var(--gold); }
+.board-foot{ font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim); padding:6px 0 60px; margin:0; }
+@media (max-width:900px){ .board .contact-sheet{ grid-template-columns:repeat(4, minmax(0,1fr)); } }
+@media (max-width:520px){ .board .contact-sheet{ gap:5px; } .board .frame{ padding:4px 4px 15px; } }

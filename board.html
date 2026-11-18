@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Board — field/notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="board.css">
+<link rel="alternate" type="application/rss+xml" title="field/notes" href="https://tmcastillon01.github.io/PhotoPortfolio/feed.xml">
+</head>
+<body class="board">
+
+<div class="grain"></div>
+
+<header id="site-header" data-current="board"></header>
+<script src="nav.js"></script>
+
+<div class="wrap">
+  <div class="entry-page-head board-head">
+    <a class="back-link" href="index.html">&larr; Back to field/notes</a>
+    <div class="eyebrow" style="margin-bottom:14px;">The Board</div>
+    <h1 class="board-title">Proof sheet, <em>all rolls.</em></h1>
+    <p class="board-sub" id="board-sub"></p>
+  </div>
+  <div id="board-sheets"></div>
+  <p class="board-foot" id="board-foot"></p>
+</div>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="wordmark">field<span class="accent">/</span>notes</div>
+      <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
+      <p class="footer-copyright">© Timothy Castillon 2026</p>
+    </div>
+    <div class="subscribe" id="subscribe" data-subscribe="footer"></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lightbox-count" id="lightbox-count"></div>
+  <button type="button" class="lightbox-close" id="lightbox-close">Close ✕</button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&larr;</button>
+  <div class="lightbox-frame">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">&rarr;</button>
+</div>
+
+<script src="entries.js"></script>
+<script src="lightbox.js"></script>
+<script src="subscribe.js"></script>
+<script>
+(function () {
+  const MONTHS = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
+  function dateValue(str) {
+    const m = /^([A-Z]{3})\s+(\d{4})$/.exec(String(str || '').trim().toUpperCase());
+    return m && m[1] in MONTHS ? parseInt(m[2], 10) * 12 + MONTHS[m[1]] : 0;
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  const pad = (n) => String(n).padStart(2, '0');
+  const sorted = [...ENTRIES].sort((a, b) => dateValue(b.date) - dateValue(a.date));
+  let total = 0;
+
+  document.getElementById('board-sheets').innerHTML = sorted.map((e) => {
+    const code = e.slug.toUpperCase().slice(0, 3);
+    const frames = Array.from({ length: e.count }, (_, i) => {
+      const n = pad(i + 1);
+      total += 1;
+      const cap = e.title.split(':')[0] + ((e.captions && e.captions[i]) ? ' · ' + e.captions[i] : '');
+      return `<div class="frame${i === 0 ? ' kept' : ''}" data-frame="${code}-${n}" data-caption="${esc(cap)}" tabindex="0" role="button" aria-label="${esc(e.title)}, frame ${n}">
+        <img src="images/${e.slug}/${n}.jpg" alt="${esc(e.title)}, frame ${n}" loading="lazy">
+      </div>`;
+    }).join('');
+    return `<section class="roll">
+      <div class="roll-head">
+        <a href="entry.html?slug=${encodeURIComponent(e.slug)}">${code} &middot; ${esc(e.title.split(':')[0])}</a>
+        <span>${esc(e.date)} &middot; ${esc(e.location)}</span>
+      </div>
+      <div class="contact-sheet">${frames}</div>
+    </section>`;
+  }).join('');
+
+  document.getElementById('board-sub').textContent =
+    total + ' frames from ' + sorted.length + ' rolls, newest first. Tap a frame to enlarge it. The red pen marks the cover frame of each roll.';
+  document.getElementById('board-foot').textContent = 'Contact print · ' + total + ' frames · ' + sorted.length + ' rolls';
+  initLightbox();
+  mountSubscribe();
+})();
+</script>
+</body>
+</html>
