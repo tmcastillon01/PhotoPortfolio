@@ -28,7 +28,16 @@ function initLightbox() {
     img.alt = thumb.alt;
     const text = frame.dataset.caption || '';
     cap.textContent = text;
-    cap.style.display = text ? 'block' : 'none';
+    // Frames that carry data-href (the Board) also link back to their roll.
+    if (frame.dataset.href) {
+      const a = document.createElement('a');
+      a.href = frame.dataset.href;
+      a.className = 'lightbox-roll';
+      a.textContent = 'Open this roll \u2192';
+      cap.appendChild(document.createElement('br'));
+      cap.appendChild(a);
+    }
+    cap.style.display = (text || frame.dataset.href) ? 'block' : 'none';
     count.textContent = pad(i + 1) + ' / ' + pad(frames.length);
     prev.style.visibility = i === 0 ? 'hidden' : 'visible';
     next.style.visibility = i === frames.length - 1 ? 'hidden' : 'visible';
@@ -88,7 +97,7 @@ function initLightbox() {
     else if (e.key === 'End') show(frames.length - 1);
     else if (e.key === 'Tab') {
       // keep keyboard focus inside the viewer while it is open
-      const ring = [closeBtn, prev, next].filter((b) => b.style.visibility !== 'hidden');
+      const ring = [closeBtn, prev, next, cap.querySelector('a')].filter((b) => b && b.style.visibility !== 'hidden');
       const at = ring.indexOf(document.activeElement);
       e.preventDefault();
       ring[(at + (e.shiftKey ? -1 : 1) + ring.length) % ring.length].focus();

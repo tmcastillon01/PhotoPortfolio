@@ -50,7 +50,7 @@ const ENTRIES = [
     tags: ["Labor & Industry"],
     title: `Merkato: The Hide Trade of Addis Ababa`,
     description:
-      `Merkato runs on hands most of the city never sees up close. People call it the largest open-air market in Africa, and its hide sellers are out there from early morning, stretching raw skins, sorting them by grade, and folding them into rust-orange stacks that end up as shoes and bags an ocean away. A lot of households here depend directly on that informal trade, even if the market's scale gets all the credit and the people doing the work get almost none. Nobody stopped for the camera; they just kept moving, shouting prices to buyers I couldn't see, with only the wet slap of hide against wood and someone's radio two stalls over. I didn't get names this time, which is something I want to fix when I go back, with consent, so this reads as their skill and their trade, not just an outsider looking in.`,
+      `At Merkato, the market runs on hands most of the city never stops to watch. Donkeys loaded with burlap sacks push through narrow alleys while hide sellers stretch raw qoda across wooden frames. Together with a close friend of mine, a photographer from Slovakia, we sat near the edge of the lane for twenty minutes just taking in the pace of it. I was in awe watching a woman sit on a low stool sorting raw coffee beans by hand, separating grades and defects at a speed that made hours of repetition look effortless. A huge part of the city's economy moves through that kind of informal, low-margin labor, even if the people doing it rarely get seen beyond the market gates. I didn't ask for her name because I didn't want to break her rhythm during a busy morning, which is a gap I want to fix when I go back, with consent, so her words sit beside the frame rather than just my view from the edge of the lane.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Addis Ketema, Addis Ababa"],
@@ -82,7 +82,7 @@ const ENTRIES = [
     tags: ["Wildlife & Ecology"],
     title: `Islas Ballestas: The Poor Man's Galápagos`,
     description:
-      `Islas Ballestas is built on what nests there: sea lions, Humboldt penguins, and dense colonies of seabirds whose droppings once drove Peru's 19th-century guano boom before the islands became a marine reserve. Now the boats run on tourism instead, steered by local captains whose income rises and falls with an ocean they have no control over. When warmer Pacific water during El Niño years wipes out the fish these colonies eat, a bad ocean season isn't a climate graph. It's somebody's lost paycheck. The ride out was loud with engine noise and gulls overhead, then dead quiet once we cut the motor near the rock. I spent the whole morning watching the wildlife and barely asked the boat crew what they've actually seen change out there. That's on me to do better next time.`,
+      `Islas Ballestas is built on what nests there: sea lions crowding the harbor buoys, Humboldt penguins, and dense colonies of seabirds whose droppings once drove Peru's nineteenth century guano boom before the islands became a marine reserve. Now the boats run on day trippers instead, steered by local captains whose income rises and falls with an ocean they cannot control. When warmer Pacific water during El Niño years drives away the anchovies these colonies feed on, the rock goes quiet. The ride out was loud with outboard noise and gulls overhead, then dead still once the captain cut the engine near the arches. I spent the entire morning pointing my lens at the cliffs and barely spoke a word to the crew sitting right behind me.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Islas Ballestas, Paracas, Peru"],
@@ -116,7 +116,7 @@ const ENTRIES = [
     tags: ["Land & Climate", "Wildlife & Ecology"],
     title: `Vinicunca: Life on the Rainbow Mountain`,
     description:
-      `Everyone comes to Vinicunca for the colors, but the local families working the trail are the ones actually keeping the mountain running. They bring their own horses and alpacas, walking the steep climb on foot beside paying tourists through weather that flips from clear sky to thick fog in under an hour, in air thin enough to leave you winded just from talking. The glaciers above towns like this have disappeared within a single lifetime, part of a wider warming across the Andes that never shows up in a photo of a horse against a painted ridge. I didn't ask enough on this trip about how families here are dealing with that change. Next time, I want their own words sitting here, not just my take on what I saw.`,
+      `Everyone climbs Vinicunca for the striped ridge, while the local families working the trail carry the real weight of keeping the mountain running. One of the kids offered me a ride up on his horse. I wasn't comfortable putting my weight on an animal already working at that altitude, so I walked up the steep path beside him instead and paid him at the end anyway. Above five thousand meters, I was winded just trying to string a sentence together, while he barely broke stride. Kids out here start working early to help pay for school; you admire the grit, though you can't help wondering what their days would look like with a different set of chances. Above valleys like this, Andean glaciers have pulled back within a single lifetime, shrinking the dry season meltwater that herding and farming families depend on.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Cusco Region, Peruvian Andes"],
@@ -149,7 +149,7 @@ const ENTRIES = [
     tags: ["Personal"],
     title: `Nice: Coastline at Low Tide`,
     description:
-      `This one sits apart from the rest of the journal: a personal trip along the Côte d'Azur, not a documentary assignment, and I'd rather say that upfront than dress it up. Pastel shutters and centuries-old facades share a block with the modern city without much friction. Mostly this is a record of the beach, not sand here, but smooth gray stones you trade your shoes for, sitting until the sky burns down to orange, gulls arguing somewhere behind you and the waves doing most of the talking. There's a particular quiet to how the day ends there, watching the tide, not needing to fill the space between you and whoever you're sitting next to.`,
+      `Pastel shutters and iron balconies share a block with the coastal road without much friction, though most of my time here went to the shore. We woke up a bit late at the hotel and rushed down to the water for a quick, slow dip, sharing the shoreline with a few locals already in the sea. Along the Baie des Anges, there isn't any sand, just smooth gray galets you trade your shoes for, sitting until the sky burns down to orange, gulls arguing somewhere behind you and the Mediterranean doing most of the talking. It is still one of my favorite cities in France, partly for that unhurried rhythm, and partly for how the day ends at l'heure bleue: watching the water darken beside someone, with nothing that needed saying. That kind of quiet stays with you after you've left.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Nice, French Riviera (Côte d'Azur)"],
@@ -180,7 +180,7 @@ const ENTRIES = [
     tags: ["Land & Climate"],
     title: `Grindelwald: The Architecture of Instability`,
     description:
-      `From the town below in Grindelwald, peaks like the Eiger and Wetterhorn look permanent, carved out of solid rock and ice. Up on the slopes, the mountain is loosening its grip. Riding the lifts, it's strange watching a normal ski day play out, with people gliding down runs to the steady hum of lift cables while the rockfaces above are slowly destabilized by thawing permafrost and shrinking glaciers. Keeping winter tourism running here now means constantly building around ground that isn't as solid as it used to be. These photos aren't just about a ski season; they're about a mountain town trying to keep its routine going while the mountain itself warms underneath it.`,
+      `From the valley floor in Grindelwald, the north face of the Eiger looks permanent, carved out of solid rock and ice. Up on the lifts, the mountain feels much less settled. It was strange riding up in the cold, listening to the hum of cables while skiers carved down groomed runs below rockfaces destabilized by thawing permafrost and retreating glaciers. Keeping winter tourism open here takes constant anchoring, netting, and slope work on ground that doesn't hold together the way it used to. I came up expecting a straightforward alpine winter and mostly noticed how much engineering it takes just to keep the runs open.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Lower Grindelwald Glacier, Bernese Alps, CH"],
@@ -214,7 +214,7 @@ const ENTRIES = [
     tags: ["Land & Climate"],
     title: `Valley of Fire: The Aesthetics of Aridity`,
     description:
-      `In the Mojave, the land doesn't hide how fragile it is. I spent the afternoon out here with my uncle, and at one point he pointed at the red Aztec sandstone and said it looked scorched, like the sun had been sitting on it too long. Watching visitors hurry back into air-conditioned cars while park staff and road crews kept working in the glare, that remark stuck with me. In a basin where summer rock temperatures already pass 150°F and extreme heat days are climbing across the Southwest, nothing here gets a break. Every plant, animal, and person working this road is pushing up against heat that bodies and pavement weren't built for, and you can feel that limit just standing out in it for an afternoon.`,
+      `I spent the afternoon out here with my uncle, and at one point he looked at the red Aztec sandstone and said it looked scorched, like the sun had been sitting on it too long. Watching visitors hurry back into air conditioned cars while park staff and road crews kept working in the glare, his remark stuck with me. In a Mojave basin where summer rock temperatures pass 150°F and extreme heat days keep climbing across the Southwest, nothing gets much relief. Standing out on the trail for even an hour, you start measuring every walk by how far you are from shade and water.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Valley of Fire State Park, Mojave Desert, NV"],
@@ -247,7 +247,7 @@ const ENTRIES = [
     tags: ["Land & Climate"],
     title: `Zion: The Grandeur of Verticality`,
     description:
-      `In Zion, the canyon walls pull your eyes straight up, but what stuck with me happened down along the Virgin River. Walking the trail with my uncle, the sheer cliffs of Navajo sandstone felt untouchable, until you realize the quiet itself had to be engineered. With millions of people crowding into one narrow canyon, mandatory shuttles and permit lotteries now ration access just to keep foot traffic and cars from wearing the rock down. Meanwhile, erratic monsoons, long droughts, and record heat are changing how the river floods and what rangers have to do every day to keep the trail safe. Even a canyon made of massive stone feels the weight of a warming climate and the sheer number of us showing up to see it.`,
+      `In Zion, the canyon walls pull your eyes straight up, though what stayed with me happened down along the trail. Walking beside my uncle, the sheer cliffs of Navajo sandstone felt untouchable until you notice the crowd lines and realize the quiet itself has to be rationed. With millions of people funneling into one narrow canyon, mandatory shuttles and permit lotteries now control who gets in just to keep cars and foot traffic from wearing the floor down. Meanwhile, erratic monsoons, long droughts, and record heat are reshaping how the Virgin River floods and what rangers have to rebuild every season to keep the path passable.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Zion National Park, Springdale, UT"],
@@ -283,7 +283,7 @@ const ENTRIES = [
     tags: ["Land & Climate"],
     title: `Lavaux: The Mirror of Lake Geneva`,
     description:
-      `In Lavaux, the land doesn't just hold the vineyards. It cradles them on steep stone terraces built by hand over centuries. I walked up from Saint-Saphorin toward Chexbres with coworkers for Caves Ouvertes, the local spring wine festival, and the view over Lake Geneva was unreal. Over a glass of Chasselas, a winemaker told us about the "Three Suns": the sun overhead, the light bouncing off the lake, and the warmth trapped in the stone walls and released at night. For generations, that triple-heat setup let families grow grapes on slopes way too steep for machines. Now, hotter summers are pushing harvests weeks earlier, slowly throwing off a delicate heat balance that a whole community built its wine and identity around.`,
+      `In Lavaux, the vineyards sit on steep stone terraces stacked by hand over centuries above Lake Geneva. I walked up from Saint-Saphorin toward Chexbres with coworkers for Caves Ouvertes, the spring cellar festival, stopping at small stone doorways along the slope. Over a pour of Chasselas, a winemaker explained the "Three Suns" that make these terraces work: the sun overhead, the glare bouncing off the lake, and the heat trapped in the stone walls and released after dark. For generations, that triple heat setup let families ripen grapes on slopes too steep for tractors. Now, hotter summers are pushing les vendanges weeks earlier, throwing off a balance the whole hillside was built around.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Saint-Saphorin & Chexbres, Lavaux, Vaud, Switzerland"],
@@ -319,7 +319,7 @@ const ENTRIES = [
     region: "Asia",
     tags: ["Labor & Industry", "Land & Climate"],
     title: `Angkor: Stone, Water, and the Labor of Upkeep`,
-    description: `In Angkor, the temples don't sit apart from the land. They're held up by water and constant human presence. Walking the rain-slicked causeways, watching monks in saffron robes move quietly along the stone ledges while metal scaffolding climbed the Bayon, what stayed with me wasn't just the twelfth-century stonework, but the daily life and labor keeping it standing. I tried talking to one of the local maintenance workers tending the grounds; we didn't share a language, though what he was doing didn't really need explaining. The whole complex sits on sand foundations that depend on steady groundwater to keep the heavy stone from sinking. Caught between heavier monsoon rains wearing down the rock and dry-season water pumping around Siem Reap, Angkor survives because of the people quietly tending its edges every day.`,
+    description: `I walked the rain slicked causeways at Angkor with a fun loving couple I had met, two people who share the same habit of staying out until the light fades. What stayed with me wasn't just the twelfth century stonework but the daily labor keeping it upright. A monk in saffron robes paused along the stone edge of the moat while storm clouds sat low over the towers. I tried speaking to one of the grounds workers clearing moss near the gallery; we didn't share a language, so we nodded and watched the rain run off the laterite. The whole complex rests on sand foundations that depend on steady groundwater to keep the heavy stone from sinking. The temples face heavier monsoon downpours that wear down the carvings and dry season water pumping around Siem Reap, and they survive because local workers tend the edges every single day.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Angkor Archaeological Park, Siem Reap, Cambodia"],
@@ -352,7 +352,7 @@ const ENTRIES = [
     region: "Asia",
     tags: ["Labor & Industry", "Land & Climate"],
     title: `Atok: The Salad Bowl Above the Clouds`,
-    description: `In Atok, the mountain ridges aren't just scenery. They're carved into neat green rows that end up on Manila's tables. Driving up Halsema Highway past sheer rock overhangs and looking down from Mount Olis, you see whole hillsides terraced into vegetable plots, with farmhouses tucked right beside the crops and trucks hauling harvests out along narrow cliffside roads. Highland farmers here work in cold, thin air at over seven thousand feet, relying on predictable cool temperatures and steady rain to grow temperate crops in the middle of the tropics. Lately, though, the weather has been swinging harder between unseasonal frosts that burn leaves overnight and stronger typhoons that wash out both topsoil and the single mountain highway connecting their harvest to Manila. Standing above the clouds at sunrise, the patchwork farms look peaceful, but up close, every row is a gamble against a mountain climate getting harder to read.`,
+    description: `Driving up Halsema Highway before dawn past sheer rock overhangs, you watch steep mountain ridges give way to neat green rows of gulay that end up on Manila's tables the next morning. From Mount Olis, whole hillsides are terraced into cabbage, carrot, and potato plots, with tin roofed farmhouses tucked right beside the crops and trucks waiting along narrow cliffside turns. Highland farmers here work in cold, thin air above seven thousand feet, counting on steady chill and predictable rain to grow temperate crops in the tropics. Lately, the swings have gotten rougher: sudden frosts that burn leaves overnight, followed by stronger bagyo (storms) that wash topsoil and sections of the highway straight down the ravine.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Atok, Benguet (Halsema Highway and Mount Olis), Cordillera Central, PH"],
@@ -385,7 +385,7 @@ const ENTRIES = [
     region: "Europe",
     tags: ["Labor & Industry", "Land & Climate"],
     title: `Berat: Stone Walls and Sidewalk Looms`,
-    description: `In Berat, daily trade happens right on the stone walls of the old town. Walking up through the steep cobblestone lanes toward the citadel, you pass hand-knitted wool socks and vests hung on arched doorways, embroidered dresses clipped to wire lines, and woven kilim rugs draped straight over limestone masonry. Much of the town's tourism economy runs through that kind of informal, household-level work: families turning ground floors into small cafes and selling handmade goods directly along the footpaths to make a living from seasonal visitors. Up on the exposed hilltop ruins and along the unshaded stone alleys, though, Albania's hot summers and drier months hit outdoor vendors and historic stone neighborhoods first, squeezing both the comfort of the streets and the short summer window these small livelihoods depend on.`,
+    description: `In Berat, daily trade happens right on the walls of the old town. Walking the steep cobblestone lanes toward the citadel, you pass hand knitted wool socks and vests hung on arched doorways, embroidered dresses clipped to wire lines, and woven kilim rugs draped over limestone masonry. Much of the town's tourism runs on this household work: families turn ground floors into small cafes and hang handmade goods outside their own front doors. I bought raki and olive oil from one seller, and when we talked she told me how low her income was, because not many people were coming. Up on the exposed hilltop ruins and along the unshaded alleys, Albania's increasingly brutal summer heatwaves hit these vendors and stone neighborhoods first, shrinking the hours when anyone can comfortably walk the hill.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Mangalem, Gorica and Kala (Berat Castle), Berat, Albania"],
@@ -418,7 +418,7 @@ const ENTRIES = [
     region: "Africa",
     tags: ["Labor & Industry", "Land & Climate"],
     title: `Mombasa: Tides, Reefs, and the Beach Economy`,
-    description: `Along the coast in Mombasa, the beach is both a resort backdrop and a crowded workplace. Walk down to the water at low tide and the whole informal economy is laid out in plain sight: handlers leading camels across the white sand for tourist photos, boat crews waiting beside glass-bottom reef cruisers, and local fishermen hauling wooden canoes through the shallows by hand. Almost everyone working this stretch makes a living off the same narrow strip of reef and tide, yet none of them control what happens to it. As warming Indian Ocean waters bleach the coral reefs these glass-bottom boats depend on and rising seas eat away at the shoreline, it is hard not to notice who carries the risk when the ocean changes. Visitors fly home when the season ends; the people working the sand stay behind with a reef that has less to show and a coast that keeps shifting under their feet.`,
+    description: `Along the coast in Mombasa, the beach is both a resort backdrop and a crowded workplace. Walk down to the bahari at low tide and the whole informal economy is laid out on the sand: handlers leading camels for tourist photos, boat crews waiting beside glass bottom reef cruisers, fishermen hauling wooden ngalawa canoes through the shallows by hand. I spoke with some of them, and agreed to pay a local for a quick tour of what the low tide leaves behind. He pointed out starfish, small fish, sea anemones and urchins, along with a few others I no longer remember. Everyone working this stretch lives off the same narrow strip of reef and tide, yet none of them control what happens to it. As warming Indian Ocean waters bleach the reef and high tides chew at the shoreline, visitors fly home at the end of the week while the crews stay behind with less reef to show and less sand to stand on.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Bamburi, Nyali and Mombasa Old Town coastline, Mombasa, Kenya"],
@@ -451,7 +451,7 @@ const ENTRIES = [
     region: "Asia",
     tags: ["Personal"],
     title: `Bethlehem & the Judean Hills: Stone, Faith, and Quiet`,
-    description: `Looking up inside the dome at the Chapel of the Shepherds' Field in Beit Sahour, with light filtering through the ceiling above the nativity frescoes, there is a stillness that stays with you long after you step back out into the bright limestone streets. Outside, the city spreads across pale terraced hillsides before dropping abruptly into the dry, bare folds of the Judean Desert, where flags snap against utility poles in the wind. Walking those quiet stone courtyards on a personal trip rather than a documentary assignment, I mostly just wanted to take in the weight of a place where history, faith, and daily life sit side by side without needing much commentary.`,
+    description: `Looking up inside the dome at the Chapel of the Shepherds' Field in Beit Sahour, with light filtering through the ceiling above the nativity frescoes, there is a stillness that stays with you long after you step back out into the bright limestone streets. Outside, the city spreads across pale terraced hillsides before dropping abruptly into the dry, bare folds of the Judean Desert, where flags snap against utility poles in the wind. Moving through those quiet stone courtyards with people who treated me like family, I mostly just wanted to take in what it feels like to be welcomed into a place where history, faith, and daily life sit side by side without needing much commentary.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Beit Sahour (Shepherds' Field), Bethlehem and the Old City of Jerusalem, West Bank"],
@@ -480,7 +480,7 @@ const ENTRIES = [
     region: "Europe",
     tags: ["Coasts & Islands"],
     title: `Crete: Stone, Salt, and Summer Light`,
-    description: `In Crete, everything sits right where dry rock meets open water. Moving between the Venetian harbor in Chania, the stone causeway out to the whitewashed chapel in Georgioupoli, and the layered sea cliffs at Triopetra, you feel how tightly life on the island hugs the shoreline. Out on the water, small charter boats run back and forth beneath carved limestone arches, while inland, Lake Kournas settles into a quiet pocket beneath bare, sun-baked hills as the light drops. Even on a personal trip rather than a documentary assignment, it is hard not to notice how much the island depends on that narrow coastal strip, where summer tourism, fishing, and scarce freshwater all share the same heat-stressed ground.`,
+    description: `In Crete, everything sits where dry rock meets open water. I came in summer with friends, and it was hot. Between the Venetian harbor in Chania, the stone causeway out to the whitewashed chapel in Georgioupoli, and the layered sea cliffs at Triopetra, life on the island hugs the shoreline. Outside the chapel, we noticed small crabs. Small charter boats run back and forth beneath carved limestone arches. Inland, Lake Kournas settles into a quiet pocket beneath bare, sun baked hills as the light drops and the day trippers head back toward the coast.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Chania, Georgioupoli, Lake Kournas and Triopetra, Crete, Greece"],
@@ -509,7 +509,7 @@ const ENTRIES = [
     region: "Americas",
     tags: ["Land & Climate"],
     title: `Cabrillo: Cliffs at the Edge of the Harbor`,
-    description: `On the tip of Point Loma, two completely different coastlines sit back to back. Look east from the ridge and you see San Diego Bay packed with naval ships, runways, and concrete piers. Turn west toward the Pacific and the city drops away into crumbling sandstone bluffs, dry coastal scrub, and tidepools carved straight into the rock. Walking down toward the water, you can see how soft those layered cliffs really are, undercut by every swell while small buildings and radio towers sit right along the upper rim. With rising seas, stronger winter surf, and a steady stream of people climbing across the intertidal ledges, this narrow strip of coast is getting squeezed from both sides, caught between an ocean eating away at the rock and a city pressing right up to its edge.`,
+    description: `On the tip of Point Loma, two coastlines sit back to back. Look east from the ridge and San Diego Bay is packed with naval ships, runways, and concrete piers. Turn west and the city drops away into crumbling sandstone bluffs, dry coastal scrub, and tidepools carved into the rock. I came with my family and we just roamed around. Walking down toward the water, you can see how soft those layered cliffs are, undercut by every swell, with small buildings and radio towers right along the upper rim. Rising seas, stronger winter surf, and thousands of people crossing the intertidal ledges every week are pressing on this strip of coast from both sides.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Cabrillo National Monument, Point Loma Peninsula, San Diego, CA"],
@@ -542,7 +542,7 @@ const ENTRIES = [
     region: "Americas",
     tags: ["Land & Climate"],
     title: `New York City: Concrete, Harbor, and Unpredictable Skies`,
-    description: `In New York City, tourism never really stops for the weather, even when the sky turns sideways. Visiting in April 2024, one day opened clear over Times Square and the stone facade of the Met, and the next dropped cold rain and sleet across the harbor. People still lined up in ponchos and parkas to board the ferries out to Liberty Island and walked the slick wooden planks of the Brooklyn Bridge while low clouds swallowed the towers of Lower Manhattan. Seeing tens of millions of visitors funnel through low-lying piers, bridges, and waterfront plazas makes it obvious how exposed this city's tourism engine is to the water around it. New York sells itself as permanent concrete and steel, yet its most famous landmarks sit right on a tidal harbor facing rising seas and heavier coastal storms.`,
+    description: `Tourism in New York doesn't stop for the weather, even when the sky turns sideways. In April 2024, one day opened clear over Times Square and the stone facade of the Met, and the next dropped cold rain and sleet across the East River. People still lined up in ponchos and parkas for the harbor ferries to Liberty Island and crossed the slick wooden planks of the Brooklyn Bridge while low clouds swallowed Lower Manhattan. Even in the rain, it felt overcrowded. Tens of millions of visitors funnel through low lying piers, bridges, and waterfront plazas, which leaves the city exposed to the water around it. New York sells itself as permanent concrete and steel, yet its most famous landmarks sit on a tidal harbor facing rising seas and heavier coastal storms.`,
     voices: [],
     dataPoints: [
       ["LOCATION", "Lower Manhattan, DUMBO, Times Square and Upper New York Bay, NYC"],

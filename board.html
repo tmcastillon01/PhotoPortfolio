@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Board — field/notes</title>
+<title>The Board - field/notes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="board.css">
+<link rel="stylesheet" href="board.css?v=2">
 <link rel="alternate" type="application/rss+xml" title="field/notes" href="https://tmcastillon01.github.io/PhotoPortfolio/feed.xml">
 </head>
 <body class="board">
@@ -21,12 +21,13 @@
   <div class="entry-page-head board-head">
     <a class="back-link" href="index.html">&larr; Back to field/notes</a>
     <div class="eyebrow" style="margin-bottom:14px;">The Board</div>
-    <h1 class="board-title">Proof sheet, <em>all rolls.</em></h1>
+    <h1 class="board-title">Every frame, <em>one reel.</em></h1>
     <p class="board-sub" id="board-sub"></p>
+    <button type="button" class="board-motion" id="board-motion" aria-pressed="false">Pause motion</button>
   </div>
-  <div id="board-sheets"></div>
-  <p class="board-foot" id="board-foot"></p>
 </div>
+<div class="reels" id="reels" aria-label="All photos from every roll, moving like film"></div>
+<div class="wrap"><p class="board-foot" id="board-foot"></p></div>
 
 <footer>
   <div class="wrap footer-grid">
@@ -51,44 +52,98 @@
 </div>
 
 <script src="entries.js"></script>
-<script src="lightbox.js"></script>
+<script src="lightbox.js?v=2"></script>
 <script src="subscribe.js"></script>
 <script>
 (function () {
-  const MONTHS = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
-  function dateValue(str) {
-    const m = /^([A-Z]{3})\s+(\d{4})$/.exec(String(str || '').trim().toUpperCase());
-    return m && m[1] in MONTHS ? parseInt(m[2], 10) * 12 + MONTHS[m[1]] : 0;
-  }
   function esc(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
   const pad = (n) => String(n).padStart(2, '0');
-  const sorted = [...ENTRIES].sort((a, b) => dateValue(b.date) - dateValue(a.date));
-  let total = 0;
 
-  document.getElementById('board-sheets').innerHTML = sorted.map((e) => {
+  // every frame from every roll
+  const all = [];
+  ENTRIES.forEach((e) => {
     const code = e.slug.toUpperCase().slice(0, 3);
-    const frames = Array.from({ length: e.count }, (_, i) => {
+    for (let i = 0; i < e.count; i++) {
       const n = pad(i + 1);
-      total += 1;
       const cap = e.title.split(':')[0] + ((e.captions && e.captions[i]) ? ' · ' + e.captions[i] : '');
-      return `<div class="frame${i === 0 ? ' kept' : ''}" data-frame="${code}-${n}" data-caption="${esc(cap)}" tabindex="0" role="button" aria-label="${esc(e.title)}, frame ${n}">
-        <img src="images/${e.slug}/${n}.jpg" alt="${esc(e.title)}, frame ${n}" loading="lazy">
-      </div>`;
-    }).join('');
-    return `<section class="roll">
-      <div class="roll-head">
-        <a href="entry.html?slug=${encodeURIComponent(e.slug)}">${code} &middot; ${esc(e.title.split(':')[0])}</a>
-        <span>${esc(e.date)} &middot; ${esc(e.location)}</span>
+      all.push({ slug: e.slug, code, n, title: e.title, cap });
+    }
+  });
+
+  // shuffle, then nudge so two frames from the same roll rarely sit side by side
+  for (let i = all.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [all[i], all[j]] = [all[j], all[i]];
+  }
+  for (let i = 1; i < all.length; i++) {
+    if (all[i].slug === all[i - 1].slug) {
+      const k = (i + 7) % all.length;
+      [all[i], all[k]] = [all[k], all[i]];
+    }
+  }
+
+  const ROWS = 4;
+  const per = Math.ceil(all.length / ROWS);
+  const frameHtml = (f, clone) => `<div class="frame" data-frame="${f.code}-${f.n}" data-caption="${esc(f.cap)}" data-href="entry.html?slug=${encodeURIComponent(f.slug)}"${clone ? ' aria-hidden="true"' : ' tabindex="0" role="button" aria-label="' + esc(f.title) + ', frame ' + f.n + '"'}>
+      <img src="images/${f.slug}/${f.n}.jpg" alt="${clone ? '' : esc(f.title) + ', frame ' + f.n}" loading="lazy" decoding="async">
+    </div>`;
+
+  const reels = document.getElementById('reels');
+  const speeds = [34, 26, 40, 30]; // pixels per second, one per row
+  reels.innerHTML = Array.from({ length: ROWS }, (_, r) => {
+    const rowFrames = all.slice(r * per, (r + 1) * per);
+    return `<div class="reel ${r % 2 ? 'to-right' : 'to-left'}" data-speed="${speeds[r % speeds.length]}">
+      <div class="reel-run">
+        <div class="reel-track contact-sheet">${rowFrames.map((f) => frameHtml(f, false)).join('')}</div>
+        <div class="reel-track reel-dup">${rowFrames.map((f) => frameHtml(f, true)).join('')}</div>
       </div>
-      <div class="contact-sheet">${frames}</div>
-    </section>`;
+    </div>`;
   }).join('');
 
+  // constant speed whatever the screen: duration = one track's width / speed
+  function setSpeeds() {
+    reels.querySelectorAll('.reel').forEach((reel) => {
+      const track = reel.querySelector('.reel-track');
+      const w = track.getBoundingClientRect().width;
+      reel.querySelector('.reel-run').style.setProperty('--dur', Math.max(20, w / parseFloat(reel.dataset.speed)) + 's');
+    });
+  }
+  setSpeeds();
+  window.addEventListener('resize', setSpeeds);
+
+  // tapping a copy opens its original, so the viewer's frame list stays 1 per photo
+  reels.addEventListener('click', (ev) => {
+    const copy = ev.target.closest('.reel-dup .frame');
+    if (!copy) return;
+    const orig = reels.querySelector('.contact-sheet .frame[data-frame="' + copy.dataset.frame + '"]');
+    if (orig) orig.click();
+  });
+
+  // pause control (also on hover, touch and when the viewer is open, via CSS and below)
+  const btn = document.getElementById('board-motion');
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function setPaused(p) {
+    document.body.classList.toggle('motion-off', p);
+    btn.setAttribute('aria-pressed', p ? 'true' : 'false');
+    btn.textContent = p ? 'Play motion' : 'Pause motion';
+  }
+  setPaused(still.matches);
+  btn.addEventListener('click', () => setPaused(!document.body.classList.contains('motion-off')));
+  reels.addEventListener('touchstart', (ev) => {
+    const reel = ev.target.closest('.reel'); if (!reel) return;
+    reel.classList.add('touching');
+    clearTimeout(reel._t);
+  }, { passive: true });
+  reels.addEventListener('touchend', (ev) => {
+    const reel = ev.target.closest('.reel'); if (!reel) return;
+    reel._t = setTimeout(() => reel.classList.remove('touching'), 1800);
+  }, { passive: true });
+
   document.getElementById('board-sub').textContent =
-    total + ' frames from ' + sorted.length + ' rolls, newest first. Tap a frame to enlarge it. The red pen marks the cover frame of each roll.';
-  document.getElementById('board-foot').textContent = 'Contact print · ' + total + ' frames · ' + sorted.length + ' rolls';
+    all.length + ' frames from ' + ENTRIES.length + ' rolls, shuffled every visit. Hover or touch to slow them down, tap a frame to open it.';
+  document.getElementById('board-foot').textContent = 'Contact print · ' + all.length + ' frames · ' + ENTRIES.length + ' rolls';
   initLightbox();
   mountSubscribe();
 })();
