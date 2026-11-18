@@ -13,23 +13,8 @@
 
 <div class="grain"></div>
 
-<header>
-  <div class="wrap">
-    <nav>
-      <div class="wordmark">field<span class="accent">/</span>notes <span class="by">by</span> <span class="accent">Timothy Castillon</span></div>
-      <div class="navlinks">
-        <a href="#journal">Journal</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="projects.html">Projects</a>
-        <div class="search-wrap" id="search-wrap">
-          <button class="search-toggle" id="search-toggle" aria-label="Search entries">&#128269;</button>
-          <input class="search-input" id="search-input" type="text" placeholder="Search...">
-        </div>
-      </div>
-    </nav>
-  </div>
-</header>
+<header id="site-header" data-current="" data-hero></header>
+<script src="nav.js"></script>
 
 <section class="hero">
   <div class="hero-bg" id="hero-bg"></div>
@@ -66,6 +51,11 @@
     <div class="count" id="roll-count">— rolls developed</div>
   </div>
 
+  <div class="journal-search">
+    <label class="sr-only" for="search-input">Search the journal</label>
+    <input class="journal-search-input" id="search-input" type="search" placeholder="Search by title, place or tag" autocomplete="off" enterkeyhint="search">
+  </div>
+
   <div class="tag-filters" id="tag-filters"></div>
   <div class="tag-filters region-filters" id="region-filters"></div>
   <div class="journal-grid" id="journal-grid"></div>
@@ -99,7 +89,7 @@
       <p class="footer-note">Updated after every trip. Prints and licensing available on request.</p>
       <p class="footer-copyright">© Timothy Castillon 2026</p>
     </div>
-    <div class="subscribe" data-subscribe="footer"></div>
+    <div class="subscribe" id="subscribe" data-subscribe="footer"></div>
   </div>
 </footer>
 
@@ -109,6 +99,9 @@
   // Parses "MAR 2025" style strings into a comparable value.
   // Falls back to 0 (oldest) if the format doesn't match, rather
   // than crashing the whole sort.
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  }
   const MONTHS = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
   function dateValue(str) {
     const m = /^([A-Z]{3})\s+(\d{4})$/.exec((str || '').trim().toUpperCase());
@@ -171,7 +164,7 @@
       visible = activeRegion ? visible.filter(e => e.region === activeRegion) : visible;
       visible = visible.filter(e => matchesSearch(e, searchQuery));
       if (visible.length === 0) {
-        grid.innerHTML = `<div style="grid-column:1/-1; padding:24px 0; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-dim);">No entries match "${searchQuery}".</div>`;
+        grid.innerHTML = `<div style="grid-column:1/-1; padding:24px 0; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-dim);">No entries match "${esc(searchQuery)}".</div>`;
         return;
       }
       grid.innerHTML = visible.map(entry => `
@@ -213,21 +206,14 @@
       });
     }
 
-    // ---- search toggle + live filter ----
-    const searchWrap = document.getElementById('search-wrap');
-    const searchToggle = document.getElementById('search-toggle');
+    // ---- search (always visible in the Journal section) ----
     const searchInput = document.getElementById('search-input');
-    searchToggle.addEventListener('click', () => {
-      searchWrap.classList.toggle('open');
-      if (searchWrap.classList.contains('open')) searchInput.focus();
-    });
     searchInput.addEventListener('input', () => {
       searchQuery = searchInput.value.trim().toLowerCase();
       renderGrid();
     });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && searchWrap.classList.contains('open')) {
-        searchWrap.classList.remove('open');
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
         searchInput.value = '';
         searchQuery = '';
         renderGrid();
